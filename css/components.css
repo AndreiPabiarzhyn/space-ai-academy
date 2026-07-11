@@ -1,0 +1,79 @@
+#language {
+  appearance: none;
+  background: #17294f;
+  color: #eef7ff;
+  border: 2px solid #ffffff24;
+  border-radius: 13px;
+  padding: 10px 30px 10px 12px;
+  font: 800 14px system-ui;
+  cursor: pointer;
+}
+
+.task-picture {
+  width: 180px !important;
+  height: 125px !important;
+}
+
+.image-only { min-height: 190px; }
+.image-only .task-picture { transition: transform .25s; }
+.image-only:hover .task-picture { transform: scale(1.08) rotate(-2deg); }
+.object-name { margin-top: 10px; color: #eef7ff; font-size: 18px; }
+.trajectory-label { display: inline-block; margin-top: 7px; color: #eef7ff; }
+.mission-orbit { height: 310px; margin-bottom: 10px; }
+.trajectory-legend { display:flex; justify-content:center; align-items:center; gap:8px; color:#a8bbd8; font-size:14px; }
+.trajectory-legend span { width:13px; height:13px; border-radius:50%; margin-left:12px; }
+.legend-earth { background:#36a8e8; box-shadow:0 0 8px #4ce6ff; }
+.legend-danger { border:2px dashed #ff657d; }
+
+.autonomy-board { height:390px; position:relative; overflow:hidden; margin:24px 0; border-radius:28px; border:2px solid #4ce6ff55; background:radial-gradient(circle at 50% 50%,#123c74 0 14%,#091a3c 15% 45%,#050d22 70%); }
+.autonomy-earth { position:absolute; left:50%; top:50%; width:125px; height:125px; transform:translate(-50%,-50%); border-radius:50%; background:radial-gradient(circle at 32% 27%,#baf7ff,#3abce9 18%,#1764bd 58%,#061e5a 82%); box-shadow:0 0 45px #4ce6ff88; }
+.autonomy-earth i { position:absolute; inset:22px; border-radius:50%; background:conic-gradient(transparent 0 15%,#76e38b 16% 29%,transparent 30% 55%,#73df86 56% 72%,transparent 73%); }
+.auto-robot { position:absolute; left:12%; top:25%; transform:scale(.54); transform-origin:top left; transition:1s; z-index:4; }
+.auto-object { position:absolute; width:100px; height:75px; transition:1s; }
+.auto-object svg { width:100%; height:100%; }
+.auto-debris { right:12%; top:17%; }
+.auto-meteor { left:16%; bottom:10%; }
+.auto-repair { right:14%; bottom:10%; }
+.scan-beam { position:absolute; left:27%; top:42%; width:0; height:5px; background:linear-gradient(90deg,#4ce6ff,transparent); box-shadow:0 0 18px #4ce6ff; transform:rotate(-12deg); transform-origin:left; transition:1s; }
+.autonomy-status { position:absolute; left:50%; bottom:18px; transform:translateX(-50%); display:flex; align-items:center; gap:10px; min-width:320px; justify-content:center; padding:11px 18px; border-radius:30px; background:#07142ddd; }
+.live-dot { width:11px; height:11px; border-radius:50%; background:#8cff9b; box-shadow:0 0 12px #8cff9b; animation:pulse .7s infinite alternate; }
+.stage-0 .scan-beam { width:58%; }
+.stage-0 .auto-debris { transform:scale(.8); filter:drop-shadow(0 0 18px #ff657d); }
+.stage-1 .auto-meteor { animation:auto-avoid 1.9s ease-in-out infinite; }
+.stage-2 .auto-repair { filter:drop-shadow(0 0 20px #ffd75e); transform:translateX(-45px); }
+.stage-3 .auto-debris { opacity:0; transform:translateX(180px) scale(.3); }
+.stage-3 .auto-meteor { opacity:0; }
+.stage-3 .auto-repair { transform:translate(-90px,-38px) scale(.85); filter:drop-shadow(0 0 18px #8cff9b); }
+.stage-complete .autonomy-earth { box-shadow:0 0 75px #8cff9bcc; }
+.stage-complete .auto-debris,.stage-complete .auto-meteor { opacity:0; }
+@keyframes auto-avoid { 0%,100%{transform:translate(0,0) rotate(-10deg)}50%{transform:translate(170px,-65px) rotate(18deg)} }
+.auto-pipeline { display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; margin:15px 0 22px; }
+.auto-pipeline div { padding:10px 14px; border-radius:14px; color:#7f94b6; background:#091731; border:2px solid #ffffff12; transition:.4s; }
+.auto-pipeline div.active { color:#fff; border-color:#4ce6ff; background:#16366b; box-shadow:0 0 16px #4ce6ff33; }
+.auto-pipeline i { color:#4ce6ff; }
+.mover { width: 110px; height: 80px; font-size: 0; animation-timing-function: linear; animation-iteration-count: infinite; }
+.mover svg { width: 100%; height: 100%; filter: drop-shadow(0 7px 8px #000); }
+.trajectory-hit { animation-name: trajectory-hit; }
+.trajectory-safe { animation-name: trajectory-safe; }
+.trajectory-near { animation-name: trajectory-near; }
+@keyframes trajectory-hit {
+  0% { left:-12%; top:78%; transform:rotate(-24deg); }
+  52% { left:46%; top:40%; transform:rotate(-24deg) scale(.88); }
+  56% { left:49%; top:41%; transform:rotate(12deg) scale(.65); filter:brightness(2); }
+  100% { left:108%; top:3%; transform:rotate(-24deg); }
+}
+@keyframes trajectory-safe {
+  0% { left:-12%; top:8%; transform:rotate(4deg); }
+  50% { left:45%; top:2%; transform:rotate(4deg); }
+  100% { left:108%; top:12%; transform:rotate(4deg); }
+}
+@keyframes trajectory-near {
+  0% { left:-12%; top:90%; transform:rotate(-12deg); }
+  50% { left:43%; top:66%; transform:rotate(-12deg) scale(.9); }
+  100% { left:108%; top:52%; transform:rotate(-12deg); }
+}
+
+@media (max-width: 650px) {
+  #language { padding: 9px; }
+  .task-picture { width: 145px !important; height: 100px !important; }
+}

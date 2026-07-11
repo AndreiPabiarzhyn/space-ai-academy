@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Space AI Academy</title>
+<link rel="stylesheet" href="css/game.css">
+<link rel="stylesheet" href="css/components.css"></head><body>
+<div class="space"><div class="stars"></div><div class="planet earth"></div></div>
+<header class="top"><div class="brand">SPACE AI ACADEMY</div><div class="hud"><select id="language" aria-label="Language" onchange="setLanguage(this.value)"><option value="ru">RU</option><option value="en">EN</option><option value="pl">PL</option></select><div class="pill">★ <span id="xp">0</span> XP</div><div class="pill"><span id="levelLabel">Уровень</span> <span id="level">1</span></div><div class="pill"><div class="bar"><i id="accBar"></i></div></div><button class="iconbtn" id="restart" onclick="resetGame()" aria-label="Начать заново" title="Начать заново">↻</button><button class="iconbtn" id="sound" aria-label="Sound">♪</button></div></header>
+<nav class="map" id="map" aria-label="Mission progress"></nav><main id="app"></main><div class="footer">Built for curious humans • Progress saves on this device</div>
+<script src="js/config.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/scenes.js"></script></body></html>
