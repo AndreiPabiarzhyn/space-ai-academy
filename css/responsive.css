@@ -1,9 +1,9 @@
 @media (max-width: 820px) {
   .brand span:last-child { display: none; }
   .accuracy-pill { display: none; }
-  .academy, .certificate-layout { grid-template-columns: 1fr; }
-  .academy { padding: 24px; }
-  .academy-panel { grid-template-columns: minmax(0, 1fr) 170px; }
+  .intro-hero, .certificate-layout { grid-template-columns: 1fr; }
+  .intro-copy { padding: 30px; }
+  .intro-visual { min-height: 310px; }
   .drag-stage, .training-board { grid-template-columns: 1fr; }
   .drag-stage .data-card, .training-focus { order: -1; }
   .decision-layout, .unknown-layout { grid-template-columns: 1fr; }
@@ -44,11 +44,9 @@
   .metrics { grid-template-columns: 1fr; }
   .choice { display: grid; grid-template-columns: 1fr; }
   .choice button { width: 100%; }
-  .academy { min-height: 0; padding: 20px 17px; }
-  .academy > div:first-child { padding-top: 0; }
-  .academy-panel { grid-template-columns: 1fr; }
-  .story-hero { border-radius: 18px; }
-  .academy-robot { min-height: 180px; }
+  .intro-copy { padding: 26px 20px; }
+  .intro-visual { min-height: 260px; }
+  .intro-assistant { right: 10px; bottom: 10px; transform: scale(.9); transform-origin: right bottom; }
   .robot-review, .unknown-robot { grid-template-columns: 1fr; }
   .orbit { height: 250px; }
   .dataset-strip { grid-template-columns: 1fr; }

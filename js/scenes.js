@@ -2,7 +2,7 @@
 
 function picture(kind, label) { return `<span class="art task-picture" role="img" aria-label="${label}">${art(kind)}</span>${label?`<b class="object-name">${label}</b>`:''}`; }
 
-function intro(){app.innerHTML=`<section class="screen card theme-1"><div class="academy"><div><div class="chapter">${t('year')}</div><h1 class="title">${t('introTitle')}</h1><p class="lead">${t('introLead')}</p><div id="introAction">${btn(S.xp?t('continue'):t('wake'),'startIntro()')}</div></div><div class="academy-panel"><figure class="story-hero"><img src="assets/story/academy-arrival.png" alt="${t('introTitle')}"></figure><div class="academy-robot">${robot()}<div class="speech" id="speech">${t('loading')}</div></div></div></div></section>`}
+function intro(){app.innerHTML=`<section class="screen card theme-1 intro-hero"><div class="intro-copy"><div class="chapter">${t('year')}</div><h1 class="title">${t('introTitle')}</h1><p class="lead">${t('introLead')}</p><div id="introAction">${btn(S.xp?t('continue'):t('wake'),'startIntro()')}</div></div><figure class="intro-visual"><img src="assets/story/academy-arrival.png" alt="${t('introTitle')}"><div class="intro-assistant">${robot()}<div class="speech" id="speech">${t('loading')}</div></div></figure></section>`}
 function startIntro(){tone(300,.1,'square');setTimeout(()=>tone(520,.15),120);el('speech').textContent=t('trainerLine');el('introAction').innerHTML=btn(t('accept'),'acceptMission()')}
 function acceptMission(){if(S.xp<20)addXP(20);unlockChapter(1)}
 

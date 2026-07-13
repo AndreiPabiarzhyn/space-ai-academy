@@ -44,7 +44,7 @@ for (const selector of ['.lesson-brief', '.brief-card', '.brief-action', '.brief
   if (!css.includes(selector)) throw new Error(`Missing lesson brief selector: ${selector}`);
 }
 if (!css.includes('.course-step span { position: relative; z-index: 2;')) throw new Error('Progress circles do not cover connector lines');
-if (!css.includes('font-size: 11px; font-weight: 800;') || !css.includes('.academy-panel { display: grid;')) {
+if (!css.includes('font-size: 12px; font-weight: 800;') || !css.includes('.intro-hero { display: grid;')) {
   throw new Error('Compact intro or readable progress labels are not active');
 }
 for (const selector of ['.dataset-strip > button', '.dataset-strip .task-picture']) {
