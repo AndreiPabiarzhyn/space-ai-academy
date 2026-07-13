@@ -64,6 +64,12 @@ for (const selector of ['.dataset-strip > button', '.dataset-strip .task-picture
 for (const selector of ['.training-snapshot', '.cause-chain', '.label-fix-card', '.model-change']) {
   if (!css.includes(selector)) throw new Error(`Missing visual data lesson selector: ${selector}`);
 }
+for (const selector of ['.cinematic-grid', '.robot-shield', '.avoid-route', '.repair-beam', '.orbit-collector', '.mission-stamp', '.cinematic-log']) {
+  if (!css.includes(selector)) throw new Error(`Missing final cinematic selector: ${selector}`);
+}
+for (const animation of ['scan-sweep', 'meteor-swoop', 'repair-spark', 'collect-debris']) {
+  if (!css.includes(`@keyframes ${animation}`)) throw new Error(`Missing final cinematic animation: ${animation}`);
+}
 if (!css.includes('--bg: #070d20') || !css.includes('--page: 1380px') || css.includes('font-size: clamp(34px, 5vw, 52px)')) {
   throw new Error('Compact dark-page design tokens are not active');
 }

@@ -13,7 +13,12 @@
   .completion-panel { flex-direction: column; text-align: center; }
   .auto-pipeline { grid-template-columns: 1fr 1fr; }
   .auto-pipeline > i { display: none; }
-  .stage-2 .auto-robot { transform: translate(210px, 125px) scale(.44); }
+  .autonomy-board { min-height: 360px; }
+  .auto-robot { transform: scale(.56); }
+  .stage-1 .auto-robot { left: 27%; transform: rotate(-8deg) scale(.58); }
+  .stage-2 .auto-robot { left: 59%; transform: rotate(6deg) scale(.56); }
+  .stage-3 .auto-robot { left: 38%; transform: scale(.58); }
+  .stage-complete .auto-robot { left: 68%; transform: scale(.62); }
   .course-step small { display: none; }
   .learning-visual { grid-template-columns: 1fr; }
   .learning-visual .robot { display: none; }
@@ -54,6 +59,9 @@
   .review-arrow { transform: rotate(90deg); }
   .auto-pipeline { grid-template-columns: 1fr 1fr; }
   .autonomy-status { min-width: 250px; font-size: 13px; }
+  .scene-counter small { display: none; }
+  .auto-object { width: 88px; height: 66px; }
+  .autonomy-earth { width: 122px; height: 122px; }
   .fixed-groups { grid-template-columns: 1fr; }
   .test-gallery { grid-template-columns: repeat(3, 1fr); }
   .lesson-brief { padding-top: 55px; }

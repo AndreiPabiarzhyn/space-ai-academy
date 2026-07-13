@@ -32,6 +32,9 @@ Object.assign(L.pl,{trainerLine:'Pokaż przykłady — zapamiętam je.'});
 Object.assign(L.ru,{footer:'Автор: Andrei Pabiarzhyn • Прогресс сохраняется на устройстве'});
 Object.assign(L.en,{footer:'Created by Andrei Pabiarzhyn • Progress saves on this device'});
 Object.assign(L.pl,{footer:'Autor: Andrei Pabiarzhyn • Postęp zapisuje się na tym urządzeniu'});
+Object.assign(L.ru,{replayMovie:'Посмотреть ещё раз'});
+Object.assign(L.en,{replayMovie:'Watch again'});
+Object.assign(L.pl,{replayMovie:'Obejrzyj ponownie'});
 function t(key, vars={}) { let v=L[S.lang][key] ?? L.ru[key] ?? key; if(v&&typeof v==='object') return v; return String(v).replace(/\{(\w+)\}/g,(_,k)=>vars[k]??''); }
 function setLanguage(lang){S.lang=lang;save();document.documentElement.lang=lang;render();syncChrome()}
 function syncChrome(){document.documentElement.lang=S.lang;document.querySelector('#levelLabel').textContent=t('level');document.querySelector('.footer').textContent=t('footer');document.querySelector('#map').setAttribute('aria-label',t('progress'));document.querySelector('#language').value=S.lang}
