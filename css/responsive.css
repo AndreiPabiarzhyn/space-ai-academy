@@ -17,9 +17,10 @@
   .cinematic-intro { grid-template-columns: 140px minmax(0, 1fr); gap: 20px; padding: 28px; }
   .story-signal { width: 125px; height: 125px; }
   .auto-robot { transform: scale(.56); }
-  .stage-1 .auto-robot { left: 27%; transform: rotate(-8deg) scale(.58); }
-  .stage-2 .auto-robot { left: 59%; transform: rotate(6deg) scale(.56); }
-  .stage-3 .auto-robot { left: 38%; transform: scale(.58); }
+  .stage-0 .auto-robot { left: 27%; transform: rotate(-8deg) scale(.58); }
+  .stage-1 .auto-robot { left: 59%; transform: rotate(6deg) scale(.56); }
+  .stage-2 .auto-robot { left: 38%; transform: scale(.58); }
+  .stage-3 .auto-robot { left: 8%; transform: scale(.56); }
   .stage-complete .auto-robot { left: 68%; transform: scale(.62); }
   .course-step small { display: none; }
   .learning-visual { grid-template-columns: 1fr; }
@@ -66,7 +67,10 @@
   .story-signal { display: none; }
   .story-copy p { font-size: 15px; }
   .story-goals { margin-bottom: 15px; }
+  .story-actions { display: grid; grid-template-columns: 1fr; }
+  .story-actions button { width: 100%; }
   .auto-object { width: 88px; height: 66px; }
+  .human-beacon { min-width: 125px; padding: 9px; }
   .autonomy-earth { width: 122px; height: 122px; }
   .fixed-groups { grid-template-columns: 1fr; }
   .test-gallery { grid-template-columns: repeat(3, 1fr); }

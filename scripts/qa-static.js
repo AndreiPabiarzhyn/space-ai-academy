@@ -64,13 +64,13 @@ for (const selector of ['.dataset-strip > button', '.dataset-strip .task-picture
 for (const selector of ['.training-snapshot', '.cause-chain', '.label-fix-card', '.model-change']) {
   if (!css.includes(selector)) throw new Error(`Missing visual data lesson selector: ${selector}`);
 }
-for (const selector of ['.cinematic-grid', '.robot-shield', '.avoid-route', '.repair-beam', '.orbit-collector', '.mission-stamp', '.cinematic-log']) {
+for (const selector of ['.cinematic-grid', '.robot-shield', '.avoid-route', '.repair-beam', '.orbit-collector', '.mission-stamp', '.cinematic-log', '.repair-before', '.repair-after', '.human-beacon', '.auto-unknown']) {
   if (!css.includes(selector)) throw new Error(`Missing final cinematic selector: ${selector}`);
 }
-for (const selector of ['.cinematic-intro', '.story-signal', '.story-copy', '.story-goals', '.awaiting-start']) {
+for (const selector of ['.cinematic-intro', '.story-signal', '.story-copy', '.story-goals', '.story-actions', '.awaiting-start']) {
   if (!css.includes(selector)) throw new Error(`Missing final story selector: ${selector}`);
 }
-for (const animation of ['scan-sweep', 'meteor-swoop', 'repair-spark', 'collect-debris']) {
+for (const animation of ['scan-sweep', 'meteor-swoop', 'repair-before', 'repair-after', 'collect-one', 'collect-two', 'collect-three', 'unknown-pulse']) {
   if (!css.includes(`@keyframes ${animation}`)) throw new Error(`Missing final cinematic animation: ${animation}`);
 }
 if (!css.includes('--bg: #070d20') || !css.includes('--page: 1380px') || css.includes('font-size: clamp(34px, 5vw, 52px)')) {
@@ -98,7 +98,12 @@ for (const state of ['idle', 'thinking', 'doubt', 'happy', 'error', 'help', 'tra
 
 for (const language of ['ru', 'en', 'pl']) {
   if (context.__translations[language].chapters.length !== 10) throw new Error(`${language} must have 10 chapters`);
+  const voiceStages = context.__translations[language].finalVoiceStages;
+  if (!Array.isArray(voiceStages) || voiceStages.length !== 4 || voiceStages.some(stage => !Array.isArray(stage) || stage.length < 2)) {
+    throw new Error(`${language} final narration must contain four paced scenes`);
+  }
 }
+if (!context.__translations.ru.finalVoiceStages.flat().join('').includes('\u0301')) throw new Error('Russian final narration has no pronunciation stress marks');
 
 const dataContext = { S: { lang: 'ru' } };
 vm.runInNewContext(`${fs.readFileSync('js/free-lab.js', 'utf8')};globalThis.__train=KID_TRAIN;globalThis.__test=KID_TEST`, dataContext);
@@ -109,6 +114,9 @@ if (dataContext.__test.length !== 5 || !uniqueIds(dataContext.__test)) throw new
 const scenesSource = fs.readFileSync('js/scenes.js', 'utf8').split("el('sound').onclick")[0];
 if (!scenesSource.includes('function startFinaleMovie') || !scenesSource.includes('id="cinematicIntro"') || !scenesSource.includes("t('finalStoryText')")) {
   throw new Error('Final cinematic story intro is not active');
+}
+for (const feature of ['function cinematicVoice', 'function speakCinematic', "t('finalVoiceStages')", 'debris-one', 'debris-two', 'debris-three', 'auto-unknown', 'repair-before', 'repair-after', 'human-beacon']) {
+  if (!scenesSource.includes(feature)) throw new Error(`Missing narrated final feature: ${feature}`);
 }
 if (scenesSource.includes('dataErrorLabel(') || !scenesSource.includes('hiddenDataErrorTitle') || !scenesSource.includes('model-change')) {
   throw new Error('Visual data-quality lesson is not active');
