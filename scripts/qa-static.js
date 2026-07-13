@@ -32,10 +32,15 @@ for (const language of ['ru', 'en', 'pl']) {
   if (missing.length) throw new Error(`${language} missing dynamic translations: ${missing.join(', ')}`);
 }
 
-const css = fs.readFileSync('css/components.css', 'utf8');
+const cssFiles = ['tokens.css', 'base.css', 'layout.css', 'ui.css', 'scenes.css', 'responsive.css'];
+const css = cssFiles.map(file => fs.readFileSync(`css/${file}`, 'utf8')).join('\n');
 const openingBraces = (css.match(/{/g) || []).length;
 const closingBraces = (css.match(/}/g) || []).length;
 if (openingBraces !== closingBraces) throw new Error('Unbalanced CSS braces');
+
+for (const asset of ['academy-arrival', 'data-lab', 'collision-control', 'repair-bay', 'orbit-success']) {
+  if (!fs.existsSync(`assets/story/${asset}.png`)) throw new Error(`Missing story illustration: ${asset}`);
+}
 
 context.document.querySelector = () => null;
 vm.runInNewContext(`${fs.readFileSync('js/engine.js', 'utf8')};globalThis.__feedback={resetLessonMistakes,registerMistake,resolveMistake,mistakeReview,confidenceUI,robot}`, context);

@@ -1,0 +1,70 @@
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  font: 700 17px/1.45 Inter, ui-rounded, "Segoe UI", system-ui, sans-serif;
+}
+
+button, input { font: inherit; }
+button { border: 0; color: inherit; cursor: pointer; }
+button:disabled { cursor: not-allowed; opacity: .55; }
+button:focus-visible, [tabindex]:focus-visible, input:focus-visible {
+  outline: 4px solid rgb(108 85 217 / 28%);
+  outline-offset: 3px;
+}
+
+h1, h2, h3, p, figure { margin-top: 0; }
+img, svg { display: block; max-width: 100%; }
+.hidden { display: none !important; }
+
+.space {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(circle at 9% 72%, rgb(115 83 206 / 8%), transparent 25%),
+    radial-gradient(circle at 90% 15%, rgb(24 181 191 / 7%), transparent 28%),
+    linear-gradient(#f7f8fc, #f0f3f8);
+}
+.stars {
+  position: absolute;
+  inset: 0;
+  opacity: .33;
+  background-image: radial-gradient(#8895aa 1px, transparent 1.3px);
+  background-size: 44px 44px;
+}
+.planet { position: absolute; border-radius: 50%; opacity: .16; }
+.earth {
+  width: 150px;
+  height: 150px;
+  top: 11%;
+  right: 3%;
+  background: radial-gradient(circle at 32% 28%, #fff, #48c5d1 18%, #4a72ce 62%, #27386f 100%);
+  box-shadow: inset -24px -18px 30px rgb(28 43 102 / 30%);
+}
+.earth::after {
+  content: "";
+  position: absolute;
+  inset: 25px;
+  border-radius: 50%;
+  background: conic-gradient(transparent 0 14%, #68c98c 15% 28%, transparent 29% 58%, #69c98a 59% 72%, transparent 73%);
+}
+
+@keyframes enter { from { opacity: 0; transform: translateY(12px); } }
+@keyframes float { 50% { transform: translateY(-7px) rotate(1deg); } }
+@keyframes pulse { to { transform: scale(1.2); opacity: .7; } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes shake { 25% { transform: translateX(-7px); } 75% { transform: translateX(7px); } }
+@keyframes fall { to { transform: translateY(110vh) rotate(720deg); } }
+@keyframes fly { from { transform: translate(-100px, 220px); } to { transform: translate(950px, -30px); } }
+@keyframes blink { 0%, 46%, 54%, 100% { transform: scaleY(1); } 50% { transform: scaleY(.12); } }
+
+.screen { animation: enter .38s ease-out; }
+.shake { animation: shake .35s; }
+.confetti { position: fixed; top: -20px; z-index: 50; width: 10px; height: 16px; animation: fall 2.2s linear forwards; }

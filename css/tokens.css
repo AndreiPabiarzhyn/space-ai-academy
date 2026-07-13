@@ -1,0 +1,39 @@
+:root {
+  --bg: #f5f7fb;
+  --surface: #ffffff;
+  --surface-2: #eef2f8;
+  --ink: #17233d;
+  --muted: #63708a;
+  --line: #dce3ee;
+  --navy: #15254b;
+  --primary: #6c55d9;
+  --primary-dark: #4e3db0;
+  --cyan: #18b5bf;
+  --green: #24ad75;
+  --yellow: #f3b93f;
+  --orange: #f08049;
+  --red: #dc5570;
+  --pink: #df68a7;
+  --shadow-sm: 0 4px 12px rgb(30 48 88 / 10%);
+  --shadow: 0 16px 38px rgb(30 48 88 / 14%);
+  --radius-sm: 12px;
+  --radius: 20px;
+  --radius-lg: 28px;
+  --page: 1100px;
+  --theme-accent: var(--primary);
+  --theme-dark: var(--primary-dark);
+  --theme-soft: #eeeafd;
+  --theme-symbol: "✦";
+}
+
+.theme-1 { --theme-accent: #7059d9; --theme-dark: #513fb3; --theme-soft: #eeeafd; --theme-symbol: "★"; }
+.theme-2 { --theme-accent: #19a8a7; --theme-dark: #087d83; --theme-soft: #e1f7f5; --theme-symbol: "▦"; }
+.theme-3 { --theme-accent: #7667d7; --theme-dark: #5145aa; --theme-soft: #eceafd; --theme-symbol: "⌘"; }
+.theme-4 { --theme-accent: #3478c9; --theme-dark: #245695; --theme-soft: #e6f0fc; --theme-symbol: "◉"; }
+.theme-5 { --theme-accent: #d58b24; --theme-dark: #a56213; --theme-soft: #fff3dc; --theme-symbol: "?"; }
+.theme-6 { --theme-accent: #d75567; --theme-dark: #a7374a; --theme-soft: #fde8eb; --theme-symbol: "↗"; }
+.theme-7 { --theme-accent: #dd7343; --theme-dark: #a84b27; --theme-soft: #ffede4; --theme-symbol: "◆"; }
+.theme-8 { --theme-accent: #26a66f; --theme-dark: #16764e; --theme-soft: #e2f6ec; --theme-symbol: "✓"; }
+.theme-9 { --theme-accent: #c85b9a; --theme-dark: #953d71; --theme-soft: #fae8f2; --theme-symbol: "!"; }
+.theme-10 { --theme-accent: #168fae; --theme-dark: #09687e; --theme-soft: #e0f5f9; --theme-symbol: "✦"; }
+.theme-free { --theme-accent: #7756c9; --theme-dark: #54399b; --theme-soft: #eee8fb; --theme-symbol: "∞"; }
