@@ -17,7 +17,7 @@
 }
 
 @media (max-width: 620px) {
-  body { font-size: 16px; }
+  body { font-size: 15px; }
   .top { gap: 7px; padding-inline: 10px; }
   .brand-mark { width: 36px; }
   .player-pill small, .player-pill i, .player-pill span:last-child { display: none; }
@@ -26,9 +26,9 @@
   main { padding: 10px 10px 60px; }
   .map { padding-inline: 10px; }
   .card { border-radius: 21px; }
-  .mission-head { grid-template-columns: 1fr 90px; min-height: 145px; gap: 12px; padding: 21px 18px; }
-  .mission-body { padding: 20px 17px 24px; }
-  .title { font-size: clamp(30px, 10vw, 40px); }
+  .mission-head { grid-template-columns: 1fr 82px; min-height: 126px; gap: 12px; padding: 17px 16px; }
+  .mission-body { padding: 16px 15px 20px; }
+  .title { font-size: clamp(27px, 9vw, 35px); }
   .lead { font-size: 15px; }
   .mission-badge { width: 82px; min-height: 82px; border-radius: 18px; }
   .mission-badge::before { font-size: 36px; }
@@ -39,7 +39,8 @@
   .academy { min-height: 0; padding: 20px 17px; }
   .story-hero { border-radius: 18px; }
   .robot-review, .unknown-robot { grid-template-columns: 1fr; }
-  .orbit { height: 290px; }
+  .orbit { height: 250px; }
+  .dataset-strip { grid-template-columns: 1fr; }
   .review-flow { grid-template-columns: 1fr; }
   .review-arrow { transform: rotate(90deg); }
   .auto-pipeline { grid-template-columns: 1fr 1fr; }

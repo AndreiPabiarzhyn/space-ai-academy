@@ -1,6 +1,6 @@
 .cta, .choice button {
-  min-height: 50px;
-  padding: 13px 22px;
+  min-height: 44px;
+  padding: 10px 18px;
   border-radius: 14px;
   transition: transform .15s, box-shadow .15s, background .15s;
 }
@@ -9,12 +9,12 @@
 .cta:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--theme-dark); }
 .cta.alt { background: #da609c; box-shadow: 0 5px 0 #a33c75; }
 .choice { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-.choice button { min-width: 170px; border: 2px solid #d8deea; background: #fff; box-shadow: 0 3px 0 #ccd4e2; }
+.choice button { min-width: 150px; border: 2px solid #d8deea; background: #fff; box-shadow: 0 3px 0 #ccd4e2; }
 .choice button:hover { border-color: var(--theme-accent); background: var(--theme-soft); }
 .choice .cta { border-color: transparent; color: #fff; background: var(--theme-accent); box-shadow: 0 5px 0 var(--theme-dark); }
 .choice .cta:hover { border-color: transparent; color: #fff; background: var(--theme-accent); }
 .choice .cta.alt { background: #da609c; box-shadow: 0 5px 0 #a33c75; }
-.feedback { min-height: 48px; padding: 10px; color: var(--theme-dark); text-align: center; }
+.feedback { min-height: 40px; padding: 8px; color: var(--theme-dark); text-align: center; }
 
 .object, .data-card {
   border: 2px solid var(--line);
@@ -23,14 +23,14 @@
   box-shadow: var(--shadow-sm);
   transition: .2s;
 }
-.object { display: flex; min-height: 145px; flex-direction: column; align-items: center; justify-content: center; padding: 15px; text-align: center; }
+.object { display: flex; min-height: 125px; flex-direction: column; align-items: center; justify-content: center; padding: 12px; text-align: center; }
 .object:hover, .data-card:hover { transform: translateY(-4px); border-color: var(--theme-accent); }
-.object .art { display: grid; width: 116px; height: 86px; place-items: center; font-size: 0; }
+.object .art { display: grid; width: 104px; height: 74px; place-items: center; font-size: 0; }
 .object .art svg, .data-card .art svg, .task-picture svg { width: 100%; height: 100%; overflow: visible; }
 .object small { color: var(--muted); }
 .object-name { margin-top: 8px; font-size: 14px; }
-.data-card { display: flex; min-height: 210px; cursor: grab; user-select: none; flex-direction: column; align-items: center; justify-content: center; padding: 18px; text-align: center; }
-.data-card .art { width: 160px; height: 110px; }
+.data-card { display: flex; min-height: 180px; cursor: grab; user-select: none; flex-direction: column; align-items: center; justify-content: center; padding: 14px; text-align: center; }
+.data-card .art { width: 140px; height: 94px; }
 .label-chip { margin-bottom: 8px; color: var(--theme-dark); font-size: 12px; letter-spacing: .1em; }
 
 .robot { position: relative; width: 170px; height: 190px; margin: 14px auto; filter: drop-shadow(0 14px 13px rgb(41 61 104 / 18%)); animation: float 3s ease-in-out infinite; }
@@ -62,11 +62,11 @@
 .confidence-state i { width: 10px; height: 10px; border-radius: 50%; }
 .state-confident i { background: var(--green); }.state-doubt i { background: var(--yellow); }.state-human i { background: var(--red); }
 
-.mistake-review { margin: 8px 0 20px; padding: 18px; border: 1px solid #ead8aa; border-radius: 20px; background: #fffbef; }
+.mistake-review { margin: 6px 0 16px; padding: 14px; border: 1px solid #ead8aa; border-radius: 17px; background: #fffbef; }
 .mistake-review > header { display: flex; align-items: center; gap: 12px; }
 .mistake-review > header > span { display: grid; width: 42px; height: 42px; flex: none; place-items: center; border-radius: 13px; color: #755817; background: #f9d978; font-size: 23px; }
 .mistake-review header h3 { margin: 0 0 2px; }.mistake-review header p { margin: 0; color: var(--muted); font-size: 14px; }
-.mistake-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 12px; margin-top: 15px; }
+.mistake-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 10px; margin-top: 12px; }
 .mistake-card { padding: 13px; border: 1px solid #ead9dc; border-radius: 16px; background: #fff; }
 .mistake-picture { display: grid; grid-template-columns: 96px 1fr; min-height: 82px; align-items: center; gap: 12px; margin-bottom: 12px; padding: 8px 12px; border-radius: 13px; background: var(--surface-2); }
 .mistake-picture svg { width: 90px; height: 68px; }

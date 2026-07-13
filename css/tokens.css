@@ -1,5 +1,5 @@
 :root {
-  --bg: #f5f7fb;
+  --bg: #070d20;
   --surface: #ffffff;
   --surface-2: #eef2f8;
   --ink: #17233d;
@@ -19,7 +19,7 @@
   --radius-sm: 12px;
   --radius: 20px;
   --radius-lg: 28px;
-  --page: 1100px;
+  --page: 1060px;
   --theme-accent: var(--primary);
   --theme-dark: var(--primary-dark);
   --theme-soft: #eeeafd;

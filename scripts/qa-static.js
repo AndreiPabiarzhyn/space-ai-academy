@@ -40,6 +40,12 @@ if (openingBraces !== closingBraces) throw new Error('Unbalanced CSS braces');
 for (const selector of ['.course-step', '.choice .cta', '.review-arrow', '.mistake-review > header']) {
   if (!css.includes(selector)) throw new Error(`Missing critical UI selector: ${selector}`);
 }
+for (const selector of ['.dataset-strip > button', '.dataset-strip .task-picture']) {
+  if (!css.includes(selector)) throw new Error(`Missing compact experiment selector: ${selector}`);
+}
+if (!css.includes('--bg: #070d20') || css.includes('font-size: clamp(34px, 5vw, 52px)')) {
+  throw new Error('Compact dark-page design tokens are not active');
+}
 
 for (const asset of ['academy-arrival', 'data-lab', 'collision-control', 'repair-bay', 'orbit-success']) {
   if (!fs.existsSync(`assets/story/${asset}.png`)) throw new Error(`Missing story illustration: ${asset}`);

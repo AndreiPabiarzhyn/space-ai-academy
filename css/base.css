@@ -8,7 +8,7 @@ body {
   overflow-x: hidden;
   background: var(--bg);
   color: var(--ink);
-  font: 700 17px/1.45 Inter, ui-rounded, "Segoe UI", system-ui, sans-serif;
+  font: 700 16px/1.42 Inter, ui-rounded, "Segoe UI", system-ui, sans-serif;
 }
 
 button, input { font: inherit; }
@@ -20,6 +20,8 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible {
 }
 
 h1, h2, h3, p, figure { margin-top: 0; }
+h2 { font-size: clamp(23px, 2.5vw, 29px); line-height: 1.18; }
+h3 { font-size: 19px; line-height: 1.25; }
 img, svg { display: block; max-width: 100%; }
 .hidden { display: none !important; }
 
@@ -28,18 +30,18 @@ img, svg { display: block; max-width: 100%; }
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(circle at 9% 72%, rgb(115 83 206 / 8%), transparent 25%),
-    radial-gradient(circle at 90% 15%, rgb(24 181 191 / 7%), transparent 28%),
-    linear-gradient(#f7f8fc, #f0f3f8);
+    radial-gradient(circle at 9% 72%, rgb(111 77 205 / 24%), transparent 27%),
+    radial-gradient(circle at 90% 15%, rgb(25 173 190 / 18%), transparent 30%),
+    linear-gradient(#0b1530, #050a18 70%);
 }
 .stars {
   position: absolute;
   inset: 0;
-  opacity: .33;
-  background-image: radial-gradient(#8895aa 1px, transparent 1.3px);
+  opacity: .42;
+  background-image: radial-gradient(#d7e5ff 1px, transparent 1.3px);
   background-size: 44px 44px;
 }
-.planet { position: absolute; border-radius: 50%; opacity: .16; }
+.planet { position: absolute; border-radius: 50%; opacity: .42; }
 .earth {
   width: 150px;
   height: 150px;
