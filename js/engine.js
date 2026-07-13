@@ -1,7 +1,7 @@
 // AUDIO - tiny synthesized sounds, no external files.
 let ac;function tone(freq=440,d=.1,type='sine'){if(!S.sound)return;ac??=new AudioContext();const o=ac.createOscillator(),g=ac.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(.06,ac.currentTime);g.gain.exponentialRampToValueAtTime(.001,ac.currentTime+d);o.connect(g).connect(ac.destination);o.start();o.stop(ac.currentTime+d)}
 function el(id){return document.getElementById(id)}
-function robot(){return `<div class="robot" aria-label="SpaceAI-01"><div class="antenna"></div><div class="head"><div class="face"><i class="eye"></i><i class="eye"></i></div></div><div class="body"></div></div>`}
+function robot(state='idle'){return `<div class="robot robot-${state}" aria-label="SpaceAI-01: ${t('emotion'+state[0].toUpperCase()+state.slice(1))}"><div class="antenna"></div><div class="head"><div class="face"><i class="eye"></i><i class="eye"></i></div></div><div class="body"></div></div>`}
 function art(kind='sat'){
  const base=`<defs><linearGradient id="m" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#eafcff"/><stop offset="1" stop-color="#6586c9"/></linearGradient><linearGradient id="p"><stop stop-color="#54e8ff"/><stop offset="1" stop-color="#665cff"/></linearGradient></defs>`;
  const panel=`<g stroke="#3e65a7" stroke-width="3"><rect x="5" y="28" width="34" height="38" rx="4" fill="url(#p)"/><path d="M16 29v36M28 29v36M6 47h32"/><rect x="101" y="28" width="34" height="38" rx="4" fill="url(#p)"/><path d="M112 29v36M124 29v36M102 47h32"/></g>`;
@@ -38,3 +38,12 @@ function answerState(button,ok,message){
 }
 function rewardBurst(anchor){const r=anchor.getBoundingClientRect(),x=document.createElement('span');x.className='xp-pop';x.textContent='+ XP ✦';x.style.left=(r.left+r.width/2)+'px';x.style.top=r.top+'px';document.body.append(x);setTimeout(()=>x.remove(),1000)}
 function advanceAfterFeedback(callback,delay=650){setTimeout(callback,delay)}
+function confidenceUI(percent){const state=percent>=75?'confident':percent>=45?'doubt':'human';return `<div class="confidence-state state-${state}"><b>${t('confidence'+state[0].toUpperCase()+state.slice(1))}</b><small>${t('confidence')}: ${percent}%</small></div><div class="confidence"><i style="width:${percent}%"></i></div>`}
+function setRobotEmotion(state){const bot=document.querySelector('.robot');if(!bot)return;bot.className=bot.className.replace(/robot-(idle|thinking|doubt|happy|error|help|trained)/g,'').trim()+` robot-${state}`}
+
+let lessonMistakes=new Map();
+function resetLessonMistakes(){lessonMistakes=new Map()}
+function answerText(key){const aliases={Keep:'keep',Junk:'junk',guess:'guess',wait:'dontKnow',true:'correct',false:'incorrect'};return t(aliases[String(key)]||key)}
+function registerMistake({id,kind,user,correct,hints,explain}){let item=lessonMistakes.get(id);if(!item){item={id,kind,user,correct,hints,explain,attempts:0,resolved:false};lessonMistakes.set(id,item)}item.attempts++;item.user??=user;setRobotEmotion(item.attempts>1?'help':'error');return t(item.hints[Math.min(item.attempts-1,item.hints.length-1)])}
+function resolveMistake(id){const item=lessonMistakes.get(id);if(item){item.resolved=true;setRobotEmotion('happy')}}
+function mistakeReview(){if(!lessonMistakes.size)return `<div class="clean-run"><span>★</span><div><b>${t('noMistakes')}</b><small>${t('robotLearnedClean')}</small></div></div>`;return `<section class="mistake-review"><header><span>↻</span><div><h3>${t('mistakeReview')}</h3><p>${t('mistakeReviewLead')}</p></div></header><div class="mistake-grid">${[...lessonMistakes.values()].map(item=>`<article class="mistake-card"><div class="mistake-picture">${art(item.kind)}<b>${t(item.id)}</b></div><dl><div><dt>${t('yourAnswer')}</dt><dd>${answerText(item.user)}</dd></div><div><dt>${t('correctAnswer')}</dt><dd>${answerText(item.correct)}</dd></div></dl><p>${t(item.explain)}</p><footer>✓ ${t('robotDecisionChanged')}</footer></article>`).join('')}</div></section>`}

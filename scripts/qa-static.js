@@ -17,16 +17,39 @@ const appSource = ['js/engine.js', 'js/scenes.js', 'js/free-lab.js']
 const usedKeys = [...appSource.matchAll(/(?<![\w])t\('([^']+)'\)/g)].map(match => match[1]);
 
 for (const language of ['ru', 'en', 'pl']) {
-  const missing = [...new Set(usedKeys.filter(key =>
-    !(key in context.__translations[language]) && !(key in context.__translations.ru)
-  ))];
+  const missing = [...new Set(usedKeys.filter(key => !(key in context.__translations[language])))];
   if (missing.length) throw new Error(`${language} missing translations: ${missing.join(', ')}`);
+}
+
+const dynamicKeys = [
+  'emotionIdle','emotionThinking','emotionDoubt','emotionHappy','emotionError','emotionHelp','emotionTrained',
+  'confidenceConfident','confidenceDoubt','confidenceHuman','hintObjectPurpose','hintDamageOrUseful',
+  'hintComparePrediction','hintSeenBefore','hintAskHuman','hintWatchMovement','hintDangerZone','hintDamage',
+  'explainScanner','explainFeedback','explainUnknown','explainCollision','explainRepair'
+];
+for (const language of ['ru', 'en', 'pl']) {
+  const missing = dynamicKeys.filter(key => !(key in context.__translations[language]));
+  if (missing.length) throw new Error(`${language} missing dynamic translations: ${missing.join(', ')}`);
 }
 
 const css = fs.readFileSync('css/components.css', 'utf8');
 const openingBraces = (css.match(/{/g) || []).length;
 const closingBraces = (css.match(/}/g) || []).length;
 if (openingBraces !== closingBraces) throw new Error('Unbalanced CSS braces');
+
+context.document.querySelector = () => null;
+vm.runInNewContext(`${fs.readFileSync('js/engine.js', 'utf8')};globalThis.__feedback={resetLessonMistakes,registerMistake,resolveMistake,mistakeReview,confidenceUI,robot}`, context);
+context.__feedback.resetLessonMistakes();
+const mistake = { id: 'brokenSat', kind: 'broken', user: 'Keep', correct: 'Junk', hints: ['hintObjectPurpose', 'hintDamageOrUseful'], explain: 'explainScanner' };
+const firstHint = context.__feedback.registerMistake(mistake);
+const secondHint = context.__feedback.registerMistake(mistake);
+context.__feedback.resolveMistake('brokenSat');
+const reviewMarkup = context.__feedback.mistakeReview();
+if (firstHint === secondHint || !reviewMarkup.includes('mistake-card') || !reviewMarkup.includes('mistake-picture')) throw new Error('Mistake review or progressive hints are broken');
+if (!context.__feedback.confidenceUI(80).includes('state-confident') || !context.__feedback.confidenceUI(55).includes('state-doubt') || !context.__feedback.confidenceUI(20).includes('state-human')) throw new Error('Confidence states are broken');
+for (const state of ['idle', 'thinking', 'doubt', 'happy', 'error', 'help', 'trained']) {
+  if (!context.__feedback.robot(state).includes(`robot-${state}`)) throw new Error(`Missing robot emotion: ${state}`);
+}
 
 for (const language of ['ru', 'en', 'pl']) {
   if (context.__translations[language].chapters.length !== 10) throw new Error(`${language} must have 10 chapters`);
