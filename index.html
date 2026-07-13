@@ -10,8 +10,9 @@
 <link rel="stylesheet" href="css/scenes.css">
 <link rel="stylesheet" href="css/responsive.css"></head><body>
 <div class="space"><div class="stars"></div><div class="planet earth"></div></div>
+<div class="app-shell"><div class="app-header">
 <header class="top"><div class="brand"><span class="brand-mark">AI</span><span>SPACE AI ACADEMY</span></div><div class="hud"><select id="language" aria-label="Language" onchange="setLanguage(this.value)"><option value="ru">RU</option><option value="en">EN</option><option value="pl">PL</option></select><div class="player-pill"><span>✦ <b id="xp">0</b> XP</span><i></i><span><small id="levelLabel">Уровень</small> <b id="level">1</b></span></div><div class="accuracy-pill" title="AI accuracy"><div class="bar"><i id="accBar"></i></div></div><button class="iconbtn" id="restart" onclick="resetGame()" aria-label="Начать заново" title="Начать заново">↻</button><button class="iconbtn" id="sound" aria-label="Sound">♪</button></div></header>
-<nav class="map" id="map" aria-label="Mission progress"></nav><main id="app"></main><div class="footer">Built for curious humans • Progress saves on this device</div>
+<nav class="map" id="map" aria-label="Mission progress"></nav></div><main id="app"></main><footer class="footer">Created by Andrei Pabiarzhyn • Progress saves on this device</footer></div>
 <script src="js/config.js"></script>
 <script src="js/i18n.js"></script>
 <script src="js/engine.js"></script>

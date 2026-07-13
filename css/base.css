@@ -4,11 +4,20 @@ html { scroll-behavior: smooth; }
 
 body {
   min-height: 100vh;
+  min-height: 100svh;
   margin: 0;
   overflow-x: hidden;
   background: var(--bg);
   color: var(--ink);
   font: 700 16px/1.42 Inter, ui-rounded, "Segoe UI", system-ui, sans-serif;
+}
+
+.app-shell {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
 }
 
 button, input { font: inherit; }

@@ -44,6 +44,11 @@ for (const selector of ['.lesson-brief', '.brief-card', '.brief-action', '.brief
   if (!css.includes(selector)) throw new Error(`Missing lesson brief selector: ${selector}`);
 }
 if (!css.includes('.course-step span { position: relative; z-index: 2;')) throw new Error('Progress circles do not cover connector lines');
+if (!css.includes('right: calc(50% + 18px); left: calc(-50% + 18px);')) throw new Error('Progress connectors do not stop outside circles');
+if (!css.includes('.app-shell {') || !css.includes('grid-template-rows: auto minmax(0, 1fr) auto;')) {
+  throw new Error('Three-zone application shell is not active');
+}
+if (!css.includes('main { display: grid;') || !css.includes('align-items: center;')) throw new Error('Content is not centered in its zone');
 if (!css.includes('font-size: 12px; font-weight: 800;') || !css.includes('.intro-hero { display: grid;')) {
   throw new Error('Compact intro or readable progress labels are not active');
 }

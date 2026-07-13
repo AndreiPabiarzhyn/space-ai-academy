@@ -31,7 +31,7 @@
   .player-pill small, .player-pill i, .player-pill span:last-child { display: none; }
   .player-pill { padding-inline: 10px; }
   #lang { min-width: 44px; padding-inline: 8px; }
-  main { padding: 10px 10px 60px; }
+  main { padding: 20px 10px; }
   .map { padding-inline: 10px; }
   .card { border-radius: 21px; }
   .mission-head { grid-template-columns: 1fr 82px; min-height: 126px; gap: 12px; padding: 17px 16px; }
