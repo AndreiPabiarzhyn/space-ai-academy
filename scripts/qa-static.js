@@ -70,6 +70,9 @@ for (const selector of ['.cinematic-grid', '.robot-shield', '.avoid-route', '.re
 for (const selector of ['.cinematic-intro', '.story-signal', '.story-copy', '.story-goals', '.story-actions', '.awaiting-start']) {
   if (!css.includes(selector)) throw new Error(`Missing final story selector: ${selector}`);
 }
+for (const selector of ['.certificate-screen', '.certificate-head', '.certificate-body', '.graduate-badge', '.certificate-actions', '.certificate-achievements']) {
+  if (!css.includes(selector)) throw new Error(`Missing compact certificate selector: ${selector}`);
+}
 for (const animation of ['scan-sweep', 'meteor-swoop', 'repair-before', 'repair-after', 'collect-one', 'collect-two', 'collect-three', 'unknown-pulse']) {
   if (!css.includes(`@keyframes ${animation}`)) throw new Error(`Missing final cinematic animation: ${animation}`);
 }
@@ -115,6 +118,7 @@ const scenesSource = fs.readFileSync('js/scenes.js', 'utf8').split("el('sound').
 if (!scenesSource.includes('function startFinaleMovie') || !scenesSource.includes('id="cinematicIntro"') || !scenesSource.includes("t('finalStoryText')")) {
   throw new Error('Final cinematic story intro is not active');
 }
+if (!scenesSource.includes('certificate-screen') || !scenesSource.includes('certificate-achievements')) throw new Error('Compact certificate markup is not active');
 for (const feature of ['function cinematicVoice', 'function speakCinematic', "t('finalVoiceStages')", 'debris-one', 'debris-two', 'debris-three', 'auto-unknown', 'repair-before', 'repair-after', 'human-beacon']) {
   if (!scenesSource.includes(feature)) throw new Error(`Missing narrated final feature: ${feature}`);
 }

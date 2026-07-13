@@ -9,7 +9,9 @@
   .decision-layout, .unknown-layout { grid-template-columns: 1fr; }
   .robot-review, .unknown-robot { display: grid; grid-template-columns: 180px 1fr; align-items: center; }
   .experiment-layout, .data-before-after, .test-workbench { grid-template-columns: 1fr; }
-  .certificate-art img { min-height: 230px; }
+  .certificate-art { height: 220px; }
+  .certificate { height: auto; min-height: 260px; }
+  .certificate-achievements { grid-template-columns: 1fr 1fr; }
   .completion-panel { flex-direction: column; text-align: center; }
   .auto-pipeline { grid-template-columns: 1fr 1fr; }
   .auto-pipeline > i { display: none; }
@@ -49,6 +51,9 @@
   .mission-badge { width: 82px; min-height: 82px; border-radius: 18px; }
   .mission-badge::before { font-size: 36px; }
   .chapter-illustration { width: 92px; height: 82px; border-radius: 17px; }
+  .graduate-badge { min-width: 76px; min-height: 68px; }
+  .certificate-body { padding: 13px 14px 16px; }
+  .certificate-achievements { grid-template-columns: 1fr; }
   .metrics { grid-template-columns: 1fr; }
   .choice { display: grid; grid-template-columns: 1fr; }
   .choice button { width: 100%; }
