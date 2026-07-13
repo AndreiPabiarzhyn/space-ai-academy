@@ -3,6 +3,7 @@
   .accuracy-pill { display: none; }
   .academy, .certificate-layout { grid-template-columns: 1fr; }
   .academy { padding: 24px; }
+  .academy-panel { grid-template-columns: minmax(0, 1fr) 170px; }
   .drag-stage, .training-board { grid-template-columns: 1fr; }
   .drag-stage .data-card, .training-focus { order: -1; }
   .decision-layout, .unknown-layout { grid-template-columns: 1fr; }
@@ -45,7 +46,9 @@
   .choice button { width: 100%; }
   .academy { min-height: 0; padding: 20px 17px; }
   .academy > div:first-child { padding-top: 0; }
+  .academy-panel { grid-template-columns: 1fr; }
   .story-hero { border-radius: 18px; }
+  .academy-robot { min-height: 180px; }
   .robot-review, .unknown-robot { grid-template-columns: 1fr; }
   .orbit { height: 250px; }
   .dataset-strip { grid-template-columns: 1fr; }
