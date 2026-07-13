@@ -12,8 +12,9 @@ const unfamiliar = [
   { id:'tinySat', k:'tiny', c:'Keep' }, { id:'debris', k:'debris', c:'Junk' },
   { id:'folded', k:'folded', c:'Keep' }, { id:'blanket', k:'blanket', c:'Junk' }
 ];
-const S = { chapter:0, xp:0, level:1, accuracy:35, quality:0, sound:true,
+const S = { chapter:0, unlocked:0, xp:0, level:1, accuracy:35, quality:0, sound:true,
   name:'Space Cadet', streak:0, lang:'ru' };
 try { Object.assign(S, JSON.parse(localStorage.spaceAI || '{}')); } catch (_) {}
 if (!['ru','en','pl'].includes(S.lang)) S.lang = 'ru';
+S.unlocked = Math.max(Number(S.unlocked)||0, Number(S.chapter)||0);
 const app = document.querySelector('#app');

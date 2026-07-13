@@ -18,11 +18,23 @@ function art(kind='sat'){
  return `<svg viewBox="0 0 140 100" role="img" aria-hidden="true">${base}${map[kind]||map.sat}</svg>`
 }
 function save(){localStorage.spaceAI=JSON.stringify(S);hud()}
-function hud(){el('xp').textContent=S.xp;el('level').textContent=S.level;el('accBar').style.width=S.accuracy+'%';el('map').innerHTML=t('chapters').map((name,i)=>`<span class="${i<S.chapter?'done':i===S.chapter?'now':''}" title="${i+1}. ${name}"></span>`).join('')}
+function hud(){
+ el('xp').textContent=S.xp;el('level').textContent=S.level;el('accBar').style.width=S.accuracy+'%';
+ el('map').innerHTML=t('chapters').map((name,i)=>`<button class="course-step ${i===S.chapter?'now':i<=S.unlocked?'done':''} ${i>S.unlocked?'locked':''}" ${i>S.unlocked?'disabled':`onclick="goToChapter(${i})"`} title="${i+1}. ${name}" aria-label="${i+1}. ${name}"><span>${i!==S.chapter&&i<=S.unlocked?'✓':i+1}</span><small>${name}</small></button>`).join('')
+}
 function addXP(n=25){S.xp+=n;S.level=Math.min(6,1+Math.floor(S.xp/140));save();tone(720,.1)}
 function toast(t){document.querySelector('.toast')?.remove();const x=document.createElement('div');x.className='toast';x.textContent=t;document.body.append(x);setTimeout(()=>x.remove(),2600)}
 function confetti(n=55){for(let i=0;i<n;i++){const x=document.createElement('i');x.className='confetti';x.style.left=Math.random()*100+'vw';x.style.background=`hsl(${Math.random()*360} 90% 60%)`;x.style.animationDelay=Math.random()*.5+'s';document.body.append(x);setTimeout(()=>x.remove(),3000)}}
-function shell(ch,title,lead,body){app.innerHTML=`<section class="screen card"><div class="chapter">${t('chapter',{n:ch})} • ${t('chapters')[ch-1]}</div><h1 class="title">${title}</h1><p class="lead">${lead}</p>${body}</section>`;scrollTo({top:0,behavior:'smooth'})}
-function next(){S.chapter=Math.min(9,S.chapter+1);save();render()}
-function goToChapter(index){S.chapter=Math.max(0,Math.min(9,index));save();render()}
+function shell(ch,title,lead,body){app.innerHTML=`<section class="screen card"><header class="mission-head"><div><div class="chapter">${t('chapter',{n:ch})} • ${t('chapters')[ch-1]}</div><h1 class="title">${title}</h1><p class="lead">${lead}</p></div><div class="mission-badge" aria-hidden="true"><span>${ch}</span><small>/10</small></div></header><div class="mission-body">${body}</div></section>`;scrollTo({top:0,behavior:'smooth'})}
+function next(){goToChapter(Math.min(9,S.chapter+1))}
+function goToChapter(index){index=Math.max(0,Math.min(9,index));if(index>S.unlocked)return;S.chapter=index;save();render()}
+function unlockChapter(index){S.unlocked=Math.max(S.unlocked,index);S.chapter=index;save();render()}
 function btn(label,fn='next()',cls='cta'){return `<button class="${cls}" onclick="${fn}">${label}</button>`}
+function answerState(button,ok,message){
+ const group=button?.closest('.choice,.drag-stage');if(!group)return;
+ group.querySelectorAll('button').forEach(x=>x.disabled=true);button.classList.add('selected',ok?'answer-correct':'answer-wrong');
+ const feedback=group.parentElement.querySelector('.feedback');if(feedback){feedback.textContent=message;feedback.classList.toggle('success',ok);feedback.classList.toggle('error',!ok)}
+ if(ok){rewardBurst(button)}else{tone(145,.18,'sawtooth');setTimeout(()=>{group.querySelectorAll('button').forEach(x=>x.disabled=false);button.classList.remove('selected','answer-wrong')},650)}
+}
+function rewardBurst(anchor){const r=anchor.getBoundingClientRect(),x=document.createElement('span');x.className='xp-pop';x.textContent='+ XP ✦';x.style.left=(r.left+r.width/2)+'px';x.style.top=r.top+'px';document.body.append(x);setTimeout(()=>x.remove(),1000)}
+function waitForContinue(button,callback,label=t('continue')){const group=button.closest('.choice,.drag-stage'),nextButton=document.createElement('button');nextButton.className='cta continue-answer';nextButton.textContent=label;nextButton.onclick=callback;group.append(nextButton);nextButton.focus()}
