@@ -9,7 +9,7 @@ body {
   overflow-x: hidden;
   background: var(--bg);
   color: var(--ink);
-  font: 700 16px/1.42 Inter, ui-rounded, "Segoe UI", system-ui, sans-serif;
+  font: 700 17px/1.42 Inter, ui-rounded, "Segoe UI", system-ui, sans-serif;
 }
 
 .app-shell {

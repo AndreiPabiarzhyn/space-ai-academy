@@ -49,8 +49,14 @@ if (!css.includes('.app-shell {') || !css.includes('grid-template-rows: auto min
   throw new Error('Three-zone application shell is not active');
 }
 if (!css.includes('main { display: grid;') || !css.includes('align-items: center;')) throw new Error('Content is not centered in its zone');
-if (!css.includes('font-size: 12px; font-weight: 800;') || !css.includes('.intro-hero { display: grid;')) {
+if (!css.includes('font-size: 13px; font-weight: 800;') || !css.includes('.intro-hero { display: grid;')) {
   throw new Error('Compact intro or readable progress labels are not active');
+}
+for (const selector of ['animation-name: collision-flight', 'animation-name: safe-flight', 'animation-name: near-flight', '.mover svg']) {
+  if (!css.includes(selector)) throw new Error(`Missing collision animation rule: ${selector}`);
+}
+if (css.includes('.trajectory-hit, .trajectory-safe, .trajectory-near { position: absolute; height: 4px;')) {
+  throw new Error('Collision object is collapsed into a trajectory line');
 }
 for (const selector of ['.dataset-strip > button', '.dataset-strip .task-picture']) {
   if (!css.includes(selector)) throw new Error(`Missing compact experiment selector: ${selector}`);

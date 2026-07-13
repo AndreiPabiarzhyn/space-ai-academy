@@ -65,10 +65,16 @@
 
 .orbit { position: relative; height: 300px; margin: 13px 0; overflow: hidden; border-radius: 20px; background: radial-gradient(circle, #56b8df 0 15%, #286aa7 16% 22%, #182c55 23% 100%); }
 .danger { position: absolute; top: 31%; left: 44%; width: 128px; height: 128px; border: 4px dashed #ff7185; border-radius: 50%; animation: spin 4s linear infinite; }
-.mover { position: absolute; z-index: 3; font-size: 38px; animation: fly 4s linear infinite; }
-.trajectory-hit, .trajectory-safe, .trajectory-near { position: absolute; height: 4px; border-radius: 5px; transform-origin: left; }
-.trajectory-hit { background: var(--red); }.trajectory-safe { background: var(--green); }.trajectory-near { background: var(--yellow); }
-.trajectory-label { position: absolute; padding: 5px 8px; border-radius: 8px; color: #fff; background: rgb(16 29 56 / 80%); font-size: 12px; }
+.mover { position: absolute; z-index: 3; width: 104px; height: 76px; color: #fff; filter: drop-shadow(0 8px 12px rgb(0 0 0 / 32%)); animation-duration: 4.4s; animation-timing-function: linear; animation-iteration-count: infinite; }
+.mover svg { width: 100%; height: 100%; overflow: visible; }
+.mover::before { content: ""; position: absolute; z-index: -1; top: calc(50% - 3px); right: 75%; width: 76px; height: 6px; border-radius: 99px; background: linear-gradient(90deg, transparent, currentColor); opacity: .9; filter: drop-shadow(0 0 7px currentColor); }
+.trajectory-hit { color: #ff7185; animation-name: collision-flight; }
+.trajectory-safe { color: #72e1a8; animation-name: safe-flight; }
+.trajectory-near { color: #ffd65e; animation-name: near-flight; }
+@keyframes collision-flight { 0% { left: -9%; top: 76%; transform: rotate(-17deg); } 52% { left: 47%; top: 39%; transform: rotate(-17deg); } 100% { left: 102%; top: 4%; transform: rotate(-17deg); } }
+@keyframes safe-flight { 0% { left: -9%; top: 8%; transform: rotate(4deg); } 50% { left: 48%; top: 15%; transform: rotate(4deg); } 100% { left: 102%; top: 22%; transform: rotate(4deg); } }
+@keyframes near-flight { 0% { left: -9%; top: 77%; transform: rotate(-2deg); } 50% { left: 48%; top: 75%; transform: rotate(-2deg); } 100% { left: 102%; top: 72%; transform: rotate(-2deg); } }
+.trajectory-label { display: inline-block; margin-top: 4px; padding: 5px 9px; border-radius: 8px; color: #fff; background: rgb(16 29 56 / 80%); font-size: 13px; }
 .trajectory-legend { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin: 12px 0; color: var(--muted); font-size: 13px; }
 .trajectory-legend i { display: inline-block; width: 18px; height: 4px; margin-right: 5px; vertical-align: middle; }
 .legend-earth { background: #56b8df; }.legend-danger { background: var(--red); }

@@ -25,7 +25,7 @@
 }
 
 @media (max-width: 620px) {
-  body { font-size: 15px; }
+  body { font-size: 16px; }
   .top { gap: 7px; padding-inline: 10px; }
   .brand-mark { width: 36px; }
   .player-pill small, .player-pill i, .player-pill span:last-child { display: none; }
@@ -66,4 +66,5 @@
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .mover { animation-duration: 8s !important; animation-iteration-count: infinite !important; }
 }
