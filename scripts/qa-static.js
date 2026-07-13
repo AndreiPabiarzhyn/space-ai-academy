@@ -43,6 +43,9 @@ for (const selector of ['.course-step', '.choice .cta', '.review-arrow', '.mista
 for (const selector of ['.dataset-strip > button', '.dataset-strip .task-picture']) {
   if (!css.includes(selector)) throw new Error(`Missing compact experiment selector: ${selector}`);
 }
+for (const selector of ['.training-snapshot', '.cause-chain', '.label-fix-card', '.model-change']) {
+  if (!css.includes(selector)) throw new Error(`Missing visual data lesson selector: ${selector}`);
+}
 if (!css.includes('--bg: #070d20') || !css.includes('--page: 1380px') || css.includes('font-size: clamp(34px, 5vw, 52px)')) {
   throw new Error('Compact dark-page design tokens are not active');
 }
@@ -77,6 +80,9 @@ if (dataContext.__train.length !== 20 || !uniqueIds(dataContext.__train)) throw 
 if (dataContext.__test.length !== 5 || !uniqueIds(dataContext.__test)) throw new Error('Test set must contain 5 unique items');
 
 const scenesSource = fs.readFileSync('js/scenes.js', 'utf8').split("el('sound').onclick")[0];
+if (scenesSource.includes('dataErrorLabel(') || !scenesSource.includes('hiddenDataErrorTitle') || !scenesSource.includes('model-change')) {
+  throw new Error('Visual data-quality lesson is not active');
+}
 const sceneContext = {};
 vm.runInNewContext(`${scenesSource};globalThis.__paths=paths;globalThis.__repairs=repairs;globalThis.__real=realTasks`, sceneContext);
 for (const [name, items, expected] of [['paths', sceneContext.__paths, 3], ['repairs', sceneContext.__repairs, 5], ['real tasks', sceneContext.__real, 8]]) {

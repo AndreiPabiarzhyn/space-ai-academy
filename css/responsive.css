@@ -16,6 +16,11 @@
   .course-step small { display: none; }
   .learning-visual { grid-template-columns: 1fr; }
   .learning-visual .robot { display: none; }
+  .training-snapshot { grid-template-columns: 1fr; }
+  .cause-chain, .model-change { grid-template-columns: 1fr; }
+  .cause-chain > i, .model-change > i { transform: rotate(90deg); }
+  .label-fix-card { grid-template-columns: 1fr; }
+  .label-fix-card > .task-picture, .label-fix-card > .object-name, .label-fix-card > div { grid-column: 1; grid-row: auto; }
 }
 
 @media (max-width: 620px) {
