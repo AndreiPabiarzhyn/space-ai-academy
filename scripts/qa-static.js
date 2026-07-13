@@ -37,6 +37,9 @@ const css = cssFiles.map(file => fs.readFileSync(`css/${file}`, 'utf8')).join('\
 const openingBraces = (css.match(/{/g) || []).length;
 const closingBraces = (css.match(/}/g) || []).length;
 if (openingBraces !== closingBraces) throw new Error('Unbalanced CSS braces');
+for (const selector of ['.course-step', '.choice .cta', '.review-arrow', '.mistake-review > header']) {
+  if (!css.includes(selector)) throw new Error(`Missing critical UI selector: ${selector}`);
+}
 
 for (const asset of ['academy-arrival', 'data-lab', 'collision-control', 'repair-bay', 'orbit-success']) {
   if (!fs.existsSync(`assets/story/${asset}.png`)) throw new Error(`Missing story illustration: ${asset}`);
@@ -50,7 +53,7 @@ const firstHint = context.__feedback.registerMistake(mistake);
 const secondHint = context.__feedback.registerMistake(mistake);
 context.__feedback.resolveMistake('brokenSat');
 const reviewMarkup = context.__feedback.mistakeReview();
-if (firstHint === secondHint || !reviewMarkup.includes('mistake-card') || !reviewMarkup.includes('mistake-picture')) throw new Error('Mistake review or progressive hints are broken');
+if (firstHint === secondHint || !reviewMarkup.includes('mistake-card') || !reviewMarkup.includes('mistake-picture') || !reviewMarkup.includes('review-arrow')) throw new Error('Mistake review or progressive hints are broken');
 if (!context.__feedback.confidenceUI(80).includes('state-confident') || !context.__feedback.confidenceUI(55).includes('state-doubt') || !context.__feedback.confidenceUI(20).includes('state-human')) throw new Error('Confidence states are broken');
 for (const state of ['idle', 'thinking', 'doubt', 'happy', 'error', 'help', 'trained']) {
   if (!context.__feedback.robot(state).includes(`robot-${state}`)) throw new Error(`Missing robot emotion: ${state}`);

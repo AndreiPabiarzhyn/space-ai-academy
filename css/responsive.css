@@ -13,6 +13,7 @@
   .auto-pipeline { grid-template-columns: 1fr 1fr; }
   .auto-pipeline > i { display: none; }
   .stage-2 .auto-robot { transform: translate(210px, 125px) scale(.44); }
+  .course-step small { display: none; }
 }
 
 @media (max-width: 620px) {
