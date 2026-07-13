@@ -44,6 +44,7 @@
   .choice { display: grid; grid-template-columns: 1fr; }
   .choice button { width: 100%; }
   .academy { min-height: 0; padding: 20px 17px; }
+  .academy > div:first-child { padding-top: 0; }
   .story-hero { border-radius: 18px; }
   .robot-review, .unknown-robot { grid-template-columns: 1fr; }
   .orbit { height: 250px; }
@@ -54,6 +55,12 @@
   .autonomy-status { min-width: 250px; font-size: 13px; }
   .fixed-groups { grid-template-columns: 1fr; }
   .test-gallery { grid-template-columns: repeat(3, 1fr); }
+  .lesson-brief { padding-top: 55px; }
+  .brief-card { grid-template-columns: 1fr; }
+  .brief-bot { display: none; }
+  .brief-content { padding: 24px 19px 19px; }
+  .brief-content h2 { font-size: 24px; }
+  .brief-buttons { justify-content: stretch; }.brief-buttons button { flex: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {

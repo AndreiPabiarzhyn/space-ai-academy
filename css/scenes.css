@@ -1,4 +1,5 @@
-.academy { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(310px, .88fr); gap: 20px; align-items: center; min-height: 480px; padding: 26px; }
+.academy { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(310px, .88fr); gap: 20px; align-items: start; min-height: 480px; padding: 26px; }
+.academy > div:first-child { padding-top: 42px; }
 .academy .title { background: linear-gradient(90deg, #30265f, #7059d9 55%, #168fae); background-clip: text; color: transparent; }
 .academy-panel { padding: 16px; border: 1px solid var(--line); border-radius: 20px; background: #fff; box-shadow: var(--shadow-sm); }
 .academy-list { display: grid; gap: 9px; }

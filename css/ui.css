@@ -84,3 +84,17 @@
 
 .toast { position: fixed; z-index: 40; right: 20px; bottom: 20px; max-width: 340px; padding: 14px 18px; border: 1px solid #cebff5; border-radius: 16px; background: #fff; box-shadow: var(--shadow); }
 .xp-pop { position: fixed; z-index: 45; color: var(--primary); font-size: 24px; animation: enter .3s; }
+
+.lesson-brief { position: fixed; z-index: 100; inset: 0; display: flex; align-items: flex-start; justify-content: center; padding: clamp(80px, 16vh, 145px) 16px 30px; background: rgb(5 11 27 / 68%); backdrop-filter: blur(7px); animation: enter .2s; }
+.brief-card { position: relative; display: grid; grid-template-columns: 145px minmax(0, 1fr); width: min(720px, 100%); overflow: hidden; border: 1px solid #d9dfeb; border-top: 6px solid var(--primary); border-radius: 22px; background: #fff; box-shadow: 0 24px 70px rgb(0 0 0 / 38%); }
+.brief-card::after { content: ""; position: absolute; right: -45px; top: -65px; width: 180px; height: 180px; border-radius: 50%; background: rgb(108 85 217 / 8%); }
+.brief-close { position: absolute; z-index: 3; top: 12px; right: 12px; display: grid; width: 34px; height: 34px; place-items: center; border-radius: 11px; color: #68738a; background: #eef1f6; font-size: 22px; }
+.brief-bot { display: grid; min-height: 280px; place-items: center; background: linear-gradient(150deg, #eeebfd, #e4f7f6); }
+.brief-bot .robot { width: 145px; height: 165px; margin: 0; animation: none; transform: scale(.72); }
+.brief-content { position: relative; z-index: 1; padding: 27px 30px 24px; }
+.brief-kicker { color: var(--primary); font-size: 11px; letter-spacing: .14em; }
+.brief-content h2 { margin: 5px 40px 15px 0; font-size: 28px; }
+.brief-action { display: flex; align-items: center; gap: 12px; padding: 13px 15px; border-radius: 14px; color: #24314d; background: #f0eefb; }
+.brief-action b { display: grid; width: 28px; height: 28px; flex: none; place-items: center; border-radius: 50%; color: #fff; background: var(--primary); }.brief-action p, .brief-theory p { margin: 0; }
+.brief-theory { display: flex; align-items: flex-start; gap: 9px; margin: 12px 2px 17px; color: var(--muted); font-size: 14px; }.brief-theory i { color: var(--yellow); font-style: normal; }
+.brief-buttons { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }.brief-buttons button { min-height: 42px; padding: 9px 16px; border-radius: 12px; color: #59657b; background: #edf0f5; }.brief-buttons .cta { color: #fff; background: var(--primary); box-shadow: 0 4px 0 var(--primary-dark); }

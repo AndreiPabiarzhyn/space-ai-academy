@@ -40,6 +40,10 @@ if (openingBraces !== closingBraces) throw new Error('Unbalanced CSS braces');
 for (const selector of ['.course-step', '.choice .cta', '.review-arrow', '.mistake-review > header']) {
   if (!css.includes(selector)) throw new Error(`Missing critical UI selector: ${selector}`);
 }
+for (const selector of ['.lesson-brief', '.brief-card', '.brief-action', '.brief-theory']) {
+  if (!css.includes(selector)) throw new Error(`Missing lesson brief selector: ${selector}`);
+}
+if (!css.includes('.course-step span { position: relative; z-index: 2;')) throw new Error('Progress circles do not cover connector lines');
 for (const selector of ['.dataset-strip > button', '.dataset-strip .task-picture']) {
   if (!css.includes(selector)) throw new Error(`Missing compact experiment selector: ${selector}`);
 }
