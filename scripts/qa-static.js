@@ -43,9 +43,10 @@ for (const selector of ['.course-step', '.choice .cta', '.review-arrow', '.mista
 for (const selector of ['.dataset-strip > button', '.dataset-strip .task-picture']) {
   if (!css.includes(selector)) throw new Error(`Missing compact experiment selector: ${selector}`);
 }
-if (!css.includes('--bg: #070d20') || css.includes('font-size: clamp(34px, 5vw, 52px)')) {
+if (!css.includes('--bg: #070d20') || !css.includes('--page: 1380px') || css.includes('font-size: clamp(34px, 5vw, 52px)')) {
   throw new Error('Compact dark-page design tokens are not active');
 }
+if (!css.includes('.learning-visual { display: grid;')) throw new Error('Wide learning layout is not active');
 
 for (const asset of ['academy-arrival', 'data-lab', 'collision-control', 'repair-bay', 'orbit-success']) {
   if (!fs.existsSync(`assets/story/${asset}.png`)) throw new Error(`Missing story illustration: ${asset}`);

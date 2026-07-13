@@ -14,6 +14,8 @@
   .auto-pipeline > i { display: none; }
   .stage-2 .auto-robot { transform: translate(210px, 125px) scale(.44); }
   .course-step small { display: none; }
+  .learning-visual { grid-template-columns: 1fr; }
+  .learning-visual .robot { display: none; }
 }
 
 @media (max-width: 620px) {

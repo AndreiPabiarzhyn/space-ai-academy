@@ -19,8 +19,10 @@
 .network { position: relative; height: 185px; margin: 14px 0; overflow: hidden; border-radius: 19px; background: linear-gradient(135deg, #2f285b, #273d6b); }
 .node { position: absolute; width: 23px; height: 23px; border-radius: 50%; background: #a794f1; box-shadow: 0 0 17px #9a88e8; animation: pulse 1s alternate infinite; }
 .node::after { content: ""; position: absolute; top: 10px; left: 20px; width: 150px; height: 3px; transform: rotate(var(--r, 0deg)); transform-origin: left; background: linear-gradient(90deg, #5ed8df, transparent); }
-.learning-visual { text-align: center; }
-.data-experiment { display: grid; gap: 16px; }
+.learning-visual { display: grid; grid-template-columns: minmax(0, 1fr) 190px; gap: 18px; align-items: center; text-align: center; }
+.learning-visual .network { margin: 8px 0; }
+.learning-visual .robot { height: 180px; margin: -4px auto; animation: none; transform: scale(.76); }
+.data-experiment { display: grid; gap: 12px; }
 .experiment-step { color: var(--theme-dark); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
 .experiment-layout, .data-before-after { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items: center; }
 .wrong-label { padding: 15px; border: 2px solid var(--red); border-radius: 18px; background: #fff0f2; }
