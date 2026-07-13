@@ -37,4 +37,4 @@ function answerState(button,ok,message){
  if(ok){rewardBurst(button)}else{tone(145,.18,'sawtooth');setTimeout(()=>{group.querySelectorAll('button').forEach(x=>x.disabled=false);button.classList.remove('selected','answer-wrong')},650)}
 }
 function rewardBurst(anchor){const r=anchor.getBoundingClientRect(),x=document.createElement('span');x.className='xp-pop';x.textContent='+ XP ✦';x.style.left=(r.left+r.width/2)+'px';x.style.top=r.top+'px';document.body.append(x);setTimeout(()=>x.remove(),1000)}
-function waitForContinue(button,callback,label=t('continue')){const group=button.closest('.choice,.drag-stage'),nextButton=document.createElement('button');nextButton.className='cta continue-answer';nextButton.textContent=label;nextButton.onclick=callback;group.append(nextButton);nextButton.focus()}
+function advanceAfterFeedback(callback,delay=650){setTimeout(callback,delay)}
