@@ -67,6 +67,9 @@ for (const selector of ['.training-snapshot', '.cause-chain', '.label-fix-card',
 for (const selector of ['.cinematic-grid', '.robot-shield', '.avoid-route', '.repair-beam', '.orbit-collector', '.mission-stamp', '.cinematic-log']) {
   if (!css.includes(selector)) throw new Error(`Missing final cinematic selector: ${selector}`);
 }
+for (const selector of ['.cinematic-intro', '.story-signal', '.story-copy', '.story-goals', '.awaiting-start']) {
+  if (!css.includes(selector)) throw new Error(`Missing final story selector: ${selector}`);
+}
 for (const animation of ['scan-sweep', 'meteor-swoop', 'repair-spark', 'collect-debris']) {
   if (!css.includes(`@keyframes ${animation}`)) throw new Error(`Missing final cinematic animation: ${animation}`);
 }
@@ -104,6 +107,9 @@ if (dataContext.__train.length !== 20 || !uniqueIds(dataContext.__train)) throw 
 if (dataContext.__test.length !== 5 || !uniqueIds(dataContext.__test)) throw new Error('Test set must contain 5 unique items');
 
 const scenesSource = fs.readFileSync('js/scenes.js', 'utf8').split("el('sound').onclick")[0];
+if (!scenesSource.includes('function startFinaleMovie') || !scenesSource.includes('id="cinematicIntro"') || !scenesSource.includes("t('finalStoryText')")) {
+  throw new Error('Final cinematic story intro is not active');
+}
 if (scenesSource.includes('dataErrorLabel(') || !scenesSource.includes('hiddenDataErrorTitle') || !scenesSource.includes('model-change')) {
   throw new Error('Visual data-quality lesson is not active');
 }
