@@ -73,6 +73,9 @@ for (const selector of ['.cinematic-intro', '.story-signal', '.story-copy', '.st
 for (const selector of ['.certificate-screen', '.certificate-head', '.certificate-body', '.graduate-badge', '.certificate-actions', '.certificate-achievements']) {
   if (!css.includes(selector)) throw new Error(`Missing compact certificate selector: ${selector}`);
 }
+for (const selector of ['main > .free-lab-screen', '.free-lab-head', '.free-lab-body', '.free-back']) {
+  if (!css.includes(selector)) throw new Error(`Missing free lab frame selector: ${selector}`);
+}
 for (const animation of ['scan-sweep', 'meteor-swoop', 'repair-before', 'repair-after', 'collect-one', 'collect-two', 'collect-three', 'unknown-pulse']) {
   if (!css.includes(`@keyframes ${animation}`)) throw new Error(`Missing final cinematic animation: ${animation}`);
 }
