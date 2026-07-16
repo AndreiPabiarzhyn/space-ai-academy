@@ -5,7 +5,7 @@
   .intro-hero { min-height: 560px; }
   main:has(> .intro-hero) { width: 100%; padding: 20px 14px; }
   main > .screen { translate: 0 -10px; }
-  main > .free-lab-screen { width: calc(100vw - 28px); }
+  main > .free-lab-screen { width: 100%; }
   .free-lab-head { padding: 18px 20px 16px; }
   .free-lab-body { padding: 15px 20px 18px; }
   .intro-copy { width: 72%; min-height: inherit; padding: 38px; }

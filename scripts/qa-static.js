@@ -76,6 +76,9 @@ for (const selector of ['.certificate-screen', '.certificate-head', '.certificat
 for (const selector of ['main > .free-lab-screen', '.free-lab-head', '.free-lab-body', '.free-back']) {
   if (!css.includes(selector)) throw new Error(`Missing free lab frame selector: ${selector}`);
 }
+if (!css.includes('main > .free-lab-screen { width: 100%; max-width: var(--page);') || css.includes('width: min(1540px, calc(100vw - 56px))')) {
+  throw new Error('Free learning lab escapes the shared content frame');
+}
 for (const animation of ['scan-sweep', 'meteor-swoop', 'repair-before', 'repair-after', 'collect-one', 'collect-two', 'collect-three', 'unknown-pulse']) {
   if (!css.includes(`@keyframes ${animation}`)) throw new Error(`Missing final cinematic animation: ${animation}`);
 }
@@ -125,8 +128,11 @@ if (!scenesSource.includes('certificate-screen') || !scenesSource.includes('cert
 for (const feature of ['function speakCinematic', 'Voice.play', "t('finalVoiceStages')", 'debris-one', 'debris-two', 'debris-three', 'auto-unknown', 'repair-before', 'repair-after', 'human-beacon']) {
   if (!scenesSource.includes(feature)) throw new Error(`Missing narrated final feature: ${feature}`);
 }
+if (!scenesSource.includes('async function runFinale') || !scenesSource.includes('await Promise.all') || scenesSource.includes('setInterval(advance,7200)')) {
+  throw new Error('Final cinematic is not synchronized with narration');
+}
 const voiceSource = fs.readFileSync('js/voice.js', 'utf8');
-if (!voiceSource.includes('assets/audio/${S.lang}/${key}.mp3') || !voiceSource.includes('browserFallback')) {
+if (!voiceSource.includes('assets/audio/${S.lang}/${key}.mp3') || !voiceSource.includes('browserFallback') || !voiceSource.includes("finish('ended')")) {
   throw new Error('API narration player or browser fallback is missing');
 }
 if (!appSource.includes('function narrateCurrent') || appSource.includes('skipNextLessonBrief=true')) {
