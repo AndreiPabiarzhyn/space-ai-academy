@@ -37,22 +37,25 @@
   .cause-chain > i, .model-change > i { transform: rotate(90deg); }
   .label-fix-card { grid-template-columns: 1fr; }
   .label-fix-card > .task-picture, .label-fix-card > .object-name, .label-fix-card > div { grid-column: 1; grid-row: auto; }
+  main > .screen.card:not(.intro-hero):not(.free-lab-screen) { min-height: 0; }
 }
 
 @media (max-width: 620px) {
-  body { font-size: 16px; }
+  body { font-size: 17px; }
   .top { gap: 7px; padding-inline: 10px; }
   .brand-mark { width: 36px; }
   .player-pill small, .player-pill i, .player-pill span:last-child { display: none; }
   .player-pill { padding-inline: 10px; }
-  #lang { min-width: 44px; padding-inline: 8px; }
+  .voice-control { width: 38px; justify-content: center; padding: 0; }.voice-control b { display: none; }
+  .language-control { padding-inline: 7px; }.language-control > span { display: none; }
+  #language { min-width: 42px; padding-inline: 2px 16px; }
   main { padding: 20px 10px; }
   .map { padding-inline: 10px; }
   .card { border-radius: 21px; }
   .mission-head { grid-template-columns: 1fr 82px; min-height: 126px; gap: 12px; padding: 17px 16px; }
   .mission-body { padding: 16px 15px 20px; }
   .title { font-size: clamp(27px, 9vw, 35px); }
-  .lead { font-size: 15px; }
+  .lead { font-size: 16px; }
   .mission-badge { width: 82px; min-height: 82px; border-radius: 18px; }
   .mission-badge::before { font-size: 36px; }
   .chapter-illustration { width: 92px; height: 82px; border-radius: 17px; }

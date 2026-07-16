@@ -24,13 +24,19 @@
 .brand { display: flex; align-items: center; gap: 8px; font-size: 16px; letter-spacing: .02em; white-space: nowrap; }
 .brand-mark { display: grid; width: 32px; height: 32px; place-items: center; border-radius: 10px; background: linear-gradient(135deg, #8d75ef, #24bdc6); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 25%); }
 .hud { display: flex; align-items: center; gap: 8px; margin-left: auto; }
-.player-pill, .accuracy-pill, .iconbtn, #lang {
+.player-pill, .accuracy-pill, .iconbtn, .voice-control, .language-control {
   min-height: 36px;
   border: 1px solid rgb(255 255 255 / 14%);
   background: rgb(255 255 255 / 9%);
   border-radius: 13px;
 }
-#lang { min-width: 50px; padding: 0 12px; color: #fff; }
+.voice-control { display: flex; align-items: center; gap: 7px; padding: 0 12px; color: #fff; background: linear-gradient(135deg, #775ee6, #35bfc8); box-shadow: inset 0 1px 0 rgb(255 255 255 / 24%); }
+.voice-control span { font-size: 16px; }.voice-control b { font-size: 13px; white-space: nowrap; }
+.voice-control:hover { filter: brightness(1.09); transform: translateY(-1px); }
+.language-control { display: flex; align-items: center; gap: 5px; padding: 0 7px 0 9px; color: #18244a; background: linear-gradient(135deg, #ffe479, #ffac72); border-color: rgb(255 229 140 / 70%); box-shadow: inset 0 1px 0 rgb(255 255 255 / 55%); }
+.language-control > span { font-size: 16px; }
+#language { min-width: 44px; padding: 1px 20px 1px 3px; border: 0; color: #18244a; background: transparent; font-size: 13px; font-weight: 900; cursor: pointer; outline: 0; }
+#language option { color: #18244a; background: #fff7d3; }
 .player-pill { display: flex; align-items: center; gap: 10px; padding: 0 12px; font-size: 15px; }
 .player-pill i { width: 1px; height: 20px; background: rgb(255 255 255 / 18%); }
 .player-pill small { color: #bfc9df; font-size: 11px; }
@@ -44,7 +50,7 @@
 .course-step::before { content: ""; position: absolute; z-index: 1; top: 15px; right: calc(50% + 18px); left: calc(-50% + 18px); height: 3px; border-radius: 99px; background: #3c4967; }
 .course-step:first-child::before { display: none; }
 .course-step span { position: relative; z-index: 2; display: grid; width: 32px; height: 32px; place-items: center; border: 2px solid #71809d; border-radius: 50%; color: #edf2ff; background: #202d49; font-size: 14px; transition: .2s; }
-.course-step small { position: relative; z-index: 2; display: block; width: 100%; overflow: hidden; color: #e3eafa; font-size: 13px; font-weight: 800; line-height: 1.3; text-align: center; text-overflow: ellipsis; text-shadow: 0 1px 4px #000; white-space: nowrap; }
+.course-step small { position: relative; z-index: 2; display: block; width: 100%; overflow: hidden; color: #e3eafa; font-size: 14px; font-weight: 800; line-height: 1.3; text-align: center; text-overflow: ellipsis; text-shadow: 0 1px 4px #000; white-space: nowrap; }
 .course-step.done::before, .course-step.now::before { background: #79cfa3; }
 .course-step.done span { border-color: #65c493; color: #fff; background: #65c493; }.course-step.done small { color: #b9f0d2; }
 .course-step.now span { border-color: var(--primary); color: #fff; background: var(--primary); box-shadow: 0 0 0 4px rgb(108 85 217 / 13%); transform: scale(1.08); }
@@ -56,21 +62,23 @@ main { display: grid; width: min(100%, calc(var(--page) + 32px)); min-height: 0;
 main:has(> .intro-hero) { width: 100%; padding: clamp(18px, 2.2vh, 28px) clamp(24px, 3.25vw, 64px); }
 main > .screen { width: 100%; translate: 0 -24px; }
 main > .intro-hero { translate: 0 -8px; }
+main > .screen.card:not(.intro-hero):not(.free-lab-screen) { display: flex; min-height: clamp(520px, 60vh, 600px); flex-direction: column; }
 .card { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow); }
 .mission-head { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px; min-height: 110px; padding: 14px 22px; background: linear-gradient(135deg, var(--surface), var(--theme-soft)); border-bottom: 1px solid color-mix(in srgb, var(--theme-accent) 20%, var(--line)); }
 .mission-head::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 6px; background: var(--theme-accent); }
 .mission-head > div { align-self: center; }
-.chapter { margin-bottom: 6px; color: var(--theme-dark); font-size: 13px; letter-spacing: .11em; text-transform: uppercase; }
+.chapter { margin-bottom: 6px; color: var(--theme-dark); font-size: 14px; letter-spacing: .11em; text-transform: uppercase; }
 .title { max-width: 760px; margin-bottom: 7px; font-size: clamp(30px, 3.7vw, 42px); line-height: 1.06; letter-spacing: -.03em; }
-.lead { max-width: 760px; margin-bottom: 0; color: var(--muted); font-size: 16px; font-weight: 650; }
+.lead { max-width: 760px; margin-bottom: 0; color: var(--muted); font-size: 17px; font-weight: 650; }
 .mission-badge { display: grid; width: 82px; min-height: 80px; place-items: center; align-content: center; align-self: center; border: 1px solid color-mix(in srgb, var(--theme-accent) 24%, white); border-radius: 19px; color: var(--theme-dark); background: rgb(255 255 255 / 72%); }
 .mission-badge::before { content: var(--theme-symbol); margin-bottom: 2px; font-size: 28px; line-height: 1; }
 .mission-badge span { font-size: 18px; line-height: 1; }.mission-badge small { font-size: 10px; }
 .mission-badge svg { width: 86px; max-height: 78px; }
 .chapter-illustration { width: 150px; height: 82px; margin: 0; overflow: hidden; align-self: center; border: 3px solid rgb(255 255 255 / 70%); border-radius: 17px; background: var(--theme-soft); box-shadow: var(--shadow-sm); }
 .chapter-illustration img { width: 100%; height: 100%; object-fit: cover; }
-.mission-body { padding: 16px 26px 20px; }
-.footer { display: grid; min-height: 48px; padding: 10px 20px; place-items: center; color: #aebbd2; background: rgb(5 10 24 / 72%); border-top: 1px solid rgb(255 255 255 / 9%); font-size: 13px; text-align: center; }
+.mission-body { display: flex; flex: 1; flex-direction: column; justify-content: center; padding: 16px 26px 20px; }
+.mission-body > * { width: 100%; }
+.footer { display: grid; min-height: 48px; padding: 10px 20px; place-items: center; color: #aebbd2; background: rgb(5 10 24 / 72%); border-top: 1px solid rgb(255 255 255 / 9%); font-size: 14px; text-align: center; }
 
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 14px 0; }
 .metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 12px 0; }

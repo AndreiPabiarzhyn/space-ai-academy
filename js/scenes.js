@@ -3,7 +3,7 @@
 function picture(kind, label) { return `<span class="art task-picture" role="img" aria-label="${label}">${art(kind)}</span>${label?`<b class="object-name">${label}</b>`:''}`; }
 
 function intro(){app.innerHTML=`<section class="screen card theme-1 intro-hero"><figure class="intro-visual"><img src="assets/story/academy-arrival.png" alt="${t('introTitle')}"></figure><div class="intro-copy"><h1 class="title">${t('introTitle')}</h1><p class="lead">${t('introLead')}</p><div id="introAction">${btn(t('introStart'),'startGame()')}</div></div></section>`}
-function startGame(){tone(420,.12,'square');if(S.xp<20)addXP(20);skipNextLessonBrief=true;unlockChapter(1)}
+function startGame(){tone(420,.12,'square');if(S.xp<20)addXP(20);unlockChapter(1)}
 
 let trainI=0;
 function examplesScene(){trainI=0;resetLessonMistakes();shell(2,t('examplesTitle'),t('examplesLead'),`<div class="metrics"><div class="metric"><strong id="exCount">0 / ${objects.length}</strong>${t('examples')}</div><div class="metric"><strong id="quality">—</strong>${t('quality')}</div><div class="metric"><strong>35%</strong>${t('accuracy')}</div></div><div id="trainer"></div>`);showExample()}

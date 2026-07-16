@@ -4,6 +4,7 @@ import {spawn} from 'node:child_process';
 
 const dryRun=process.argv.includes('--dry-run');
 const apiKey=process.env.OPENAI_API_KEY;
+const missingOnly=process.env.VOICE_MISSING_ONLY==='1';
 
 const source=await fs.readFile('js/i18n.js','utf8');
 const context={S:{lang:'ru'},save(){},document:{documentElement:{},querySelector(){return {}}}};
@@ -21,6 +22,7 @@ let useOpenAI=Boolean(apiKey);
 
 function jobsFor(language){
  const pack=translations[language],jobs=[];
+ jobs.push({key:'intro',text:`${pack.introTitle}. ${pack.introLead}`});
  pack.briefs.slice(1).forEach((brief,index)=>jobs.push({key:`brief-${index+1}`,text:`${brief.do} ${brief.theory}`}));
  jobs.push({key:'data-error',text:`${pack.dataBrief.do} ${pack.dataBrief.theory}`});
  jobs.push({key:'final-story',text:pack.finalStoryVoice.join(' ')});
@@ -41,6 +43,7 @@ async function generate(language,job){
  if(dryRun){console.log(`ready ${language}/${job.key}.mp3`);return}
  const directory=`assets/audio/${language}`,file=`${directory}/${job.key}.mp3`;
  await fs.mkdir(directory,{recursive:true});
+ if(missingOnly){try{await fs.access(file);console.log(`kept ${language}/${job.key}.mp3`);return}catch{}}
  if(!useOpenAI)return generateWithEdge(language,job,file);
  const payload={model,voice,input:job.text,response_format:'mp3',speed:.96};
  if(model.includes('gpt-4o-mini-tts'))payload.instructions=instructions[language];

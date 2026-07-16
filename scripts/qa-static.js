@@ -37,7 +37,7 @@ const css = cssFiles.map(file => fs.readFileSync(`css/${file}`, 'utf8')).join('\
 const openingBraces = (css.match(/{/g) || []).length;
 const closingBraces = (css.match(/}/g) || []).length;
 if (openingBraces !== closingBraces) throw new Error('Unbalanced CSS braces');
-for (const selector of ['.course-step', '.choice .cta', '.review-arrow', '.mistake-review > header']) {
+for (const selector of ['.course-step', '.choice .cta', '.review-arrow', '.mistake-review > header', '.voice-control', '.language-control']) {
   if (!css.includes(selector)) throw new Error(`Missing critical UI selector: ${selector}`);
 }
 for (const selector of ['.lesson-brief', '.brief-card', '.brief-action', '.brief-theory']) {
@@ -49,7 +49,7 @@ if (!css.includes('.app-shell {') || !css.includes('grid-template-rows: auto min
   throw new Error('Three-zone application shell is not active');
 }
 if (!css.includes('main { display: grid;') || !css.includes('align-items: center;')) throw new Error('Content is not centered in its zone');
-if (!css.includes('font-size: 13px; font-weight: 800;') || !css.includes('.intro-hero { position: relative;')) {
+if (!css.includes('font-size: 14px; font-weight: 800;') || !css.includes('.intro-hero { position: relative;')) {
   throw new Error('Simple intro hero or readable progress labels are not active');
 }
 for (const selector of ['animation-name: collision-flight', 'animation-name: safe-flight', 'animation-name: near-flight', '.mover svg']) {
@@ -128,6 +128,9 @@ for (const feature of ['function speakCinematic', 'Voice.play', "t('finalVoiceSt
 const voiceSource = fs.readFileSync('js/voice.js', 'utf8');
 if (!voiceSource.includes('assets/audio/${S.lang}/${key}.mp3') || !voiceSource.includes('browserFallback')) {
   throw new Error('API narration player or browser fallback is missing');
+}
+if (!appSource.includes('function narrateCurrent') || appSource.includes('skipNextLessonBrief=true')) {
+  throw new Error('Persistent narration or first lesson brief is broken');
 }
 if (scenesSource.includes('dataErrorLabel(') || !scenesSource.includes('hiddenDataErrorTitle') || !scenesSource.includes('model-change')) {
   throw new Error('Visual data-quality lesson is not active');

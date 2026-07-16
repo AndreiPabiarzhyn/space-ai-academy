@@ -28,10 +28,10 @@
 .object .art { display: grid; width: 104px; height: 74px; place-items: center; font-size: 0; }
 .object .art svg, .data-card .art svg, .task-picture svg { width: 100%; height: 100%; overflow: visible; }
 .object small { color: var(--muted); }
-.object-name { margin-top: 8px; font-size: 14px; }
+.object-name { margin-top: 8px; font-size: 15px; }
 .data-card { display: flex; min-height: 180px; cursor: grab; user-select: none; flex-direction: column; align-items: center; justify-content: center; padding: 14px; text-align: center; }
 .data-card .art { width: 140px; height: 94px; }
-.label-chip { margin-bottom: 8px; color: var(--theme-dark); font-size: 12px; letter-spacing: .1em; }
+.label-chip { margin-bottom: 8px; color: var(--theme-dark); font-size: 13px; letter-spacing: .1em; }
 
 .robot { position: relative; width: 170px; height: 190px; margin: 14px auto; filter: drop-shadow(0 14px 13px rgb(41 61 104 / 18%)); animation: float 3s ease-in-out infinite; }
 .robot .antenna { position: absolute; top: -9px; left: 81px; width: 7px; height: 27px; border-radius: 4px; background: #7789b4; }
@@ -65,7 +65,7 @@
 .mistake-review { margin: 6px 0 16px; padding: 14px; border: 1px solid #ead8aa; border-radius: 17px; background: #fffbef; }
 .mistake-review > header { display: flex; align-items: center; gap: 12px; }
 .mistake-review > header > span { display: grid; width: 42px; height: 42px; flex: none; place-items: center; border-radius: 13px; color: #755817; background: #f9d978; font-size: 23px; }
-.mistake-review header h3 { margin: 0 0 2px; }.mistake-review header p { margin: 0; color: var(--muted); font-size: 14px; }
+.mistake-review header h3 { margin: 0 0 2px; }.mistake-review header p { margin: 0; color: var(--muted); font-size: 15px; }
 .mistake-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 10px; margin-top: 12px; }
 .mistake-card { padding: 13px; border: 1px solid #ead9dc; border-radius: 16px; background: #fff; }
 .mistake-picture { display: grid; grid-template-columns: 96px 1fr; min-height: 82px; align-items: center; gap: 12px; margin-bottom: 12px; padding: 8px 12px; border-radius: 13px; background: var(--surface-2); }
@@ -79,8 +79,8 @@
 .review-arrow { display: grid; place-items: center; color: var(--theme-accent); font-size: 25px; }
 .decision-face { display: inline-grid; width: 23px; height: 23px; margin-right: 5px; place-items: center; border-radius: 50%; color: #fff; background: var(--red); }
 .review-after .decision-face { background: var(--green); }
-.mistake-card > p { margin: 13px 2px 0; color: var(--muted); font-size: 14px; }
-.mistake-card footer { margin-top: 8px; color: #18845b; font-size: 13px; }
+.mistake-card > p { margin: 13px 2px 0; color: var(--muted); font-size: 15px; }
+.mistake-card footer { margin-top: 8px; color: #18845b; font-size: 14px; }
 
 .toast { position: fixed; z-index: 40; right: 20px; bottom: 20px; max-width: 340px; padding: 14px 18px; border: 1px solid #cebff5; border-radius: 16px; background: #fff; box-shadow: var(--shadow); }
 .xp-pop { position: fixed; z-index: 45; color: var(--primary); font-size: 24px; animation: enter .3s; }
@@ -96,5 +96,5 @@
 .brief-content h2 { margin: 5px 40px 15px 0; font-size: 28px; }
 .brief-action { display: flex; align-items: center; gap: 12px; padding: 13px 15px; border-radius: 14px; color: #24314d; background: #f0eefb; }
 .brief-action b { display: grid; width: 28px; height: 28px; flex: none; place-items: center; border-radius: 50%; color: #fff; background: var(--primary); }.brief-action p, .brief-theory p { margin: 0; }
-.brief-theory { display: flex; align-items: flex-start; gap: 9px; margin: 12px 2px 17px; color: var(--muted); font-size: 14px; }.brief-theory i { color: var(--yellow); font-style: normal; }
+.brief-theory { display: flex; align-items: flex-start; gap: 9px; margin: 12px 2px 17px; color: var(--muted); font-size: 15px; }.brief-theory i { color: var(--yellow); font-style: normal; }
 .brief-buttons { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }.brief-buttons button { min-height: 42px; padding: 9px 16px; border-radius: 12px; color: #59657b; background: #edf0f5; }.brief-buttons .cta { color: #fff; background: var(--primary); box-shadow: 0 4px 0 var(--primary-dark); }
