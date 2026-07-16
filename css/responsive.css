@@ -1,12 +1,14 @@
 @media (max-width: 820px) {
   .brand span:last-child { display: none; }
   .accuracy-pill { display: none; }
-  .intro-hero, .certificate-layout { grid-template-columns: 1fr; }
+  .certificate-layout { grid-template-columns: 1fr; }
+  .intro-hero { min-height: 560px; }
+  main:has(> .intro-hero) { width: 100%; padding: 20px 14px; }
+  main > .screen { translate: 0 -10px; }
   main > .free-lab-screen { width: calc(100vw - 28px); }
   .free-lab-head { padding: 18px 20px 16px; }
   .free-lab-body { padding: 15px 20px 18px; }
-  .intro-copy { padding: 30px; }
-  .intro-visual { min-height: 310px; }
+  .intro-copy { width: 72%; min-height: inherit; padding: 38px; }
   .drag-stage, .training-board { grid-template-columns: 1fr; }
   .drag-stage .data-card, .training-focus { order: -1; }
   .decision-layout, .unknown-layout { grid-template-columns: 1fr; }
@@ -60,8 +62,9 @@
   .metrics { grid-template-columns: 1fr; }
   .choice { display: grid; grid-template-columns: 1fr; }
   .choice button { width: 100%; }
-  .intro-copy { padding: 26px 20px; }
-  .intro-visual { min-height: 260px; }
+  .intro-hero { min-height: 500px; }
+  .intro-hero::after { background: linear-gradient(90deg, rgb(15 10 55 / 94%), rgb(42 23 100 / 70%) 68%, rgb(42 23 100 / 22%)); }
+  .intro-copy { width: 88%; padding: 34px 24px; }
   .intro-assistant { right: 10px; bottom: 10px; transform: scale(.9); transform-origin: right bottom; }
   .robot-review, .unknown-robot { grid-template-columns: 1fr; }
   .orbit { height: 250px; }

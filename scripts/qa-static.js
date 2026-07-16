@@ -49,8 +49,8 @@ if (!css.includes('.app-shell {') || !css.includes('grid-template-rows: auto min
   throw new Error('Three-zone application shell is not active');
 }
 if (!css.includes('main { display: grid;') || !css.includes('align-items: center;')) throw new Error('Content is not centered in its zone');
-if (!css.includes('font-size: 13px; font-weight: 800;') || !css.includes('.intro-hero { display: grid;')) {
-  throw new Error('Compact intro or readable progress labels are not active');
+if (!css.includes('font-size: 13px; font-weight: 800;') || !css.includes('.intro-hero { position: relative;')) {
+  throw new Error('Simple intro hero or readable progress labels are not active');
 }
 for (const selector of ['animation-name: collision-flight', 'animation-name: safe-flight', 'animation-name: near-flight', '.mover svg']) {
   if (!css.includes(selector)) throw new Error(`Missing collision animation rule: ${selector}`);
@@ -122,8 +122,12 @@ if (!scenesSource.includes('function startFinaleMovie') || !scenesSource.include
   throw new Error('Final cinematic story intro is not active');
 }
 if (!scenesSource.includes('certificate-screen') || !scenesSource.includes('certificate-achievements')) throw new Error('Compact certificate markup is not active');
-for (const feature of ['function cinematicVoice', 'function speakCinematic', "t('finalVoiceStages')", 'debris-one', 'debris-two', 'debris-three', 'auto-unknown', 'repair-before', 'repair-after', 'human-beacon']) {
+for (const feature of ['function speakCinematic', 'Voice.play', "t('finalVoiceStages')", 'debris-one', 'debris-two', 'debris-three', 'auto-unknown', 'repair-before', 'repair-after', 'human-beacon']) {
   if (!scenesSource.includes(feature)) throw new Error(`Missing narrated final feature: ${feature}`);
+}
+const voiceSource = fs.readFileSync('js/voice.js', 'utf8');
+if (!voiceSource.includes('assets/audio/${S.lang}/${key}.mp3') || !voiceSource.includes('browserFallback')) {
+  throw new Error('API narration player or browser fallback is missing');
 }
 if (scenesSource.includes('dataErrorLabel(') || !scenesSource.includes('hiddenDataErrorTitle') || !scenesSource.includes('model-change')) {
   throw new Error('Visual data-quality lesson is not active');
