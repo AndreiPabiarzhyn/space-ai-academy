@@ -2,6 +2,11 @@ name: Generate API voice
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/generate-voice.mjs
+      - .github/workflows/generate-voice.yml
 
 permissions:
   contents: write
@@ -14,6 +19,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install no-cost neural voice fallback
+        run: pip install edge-tts==7.2.8
       - name: Generate Russian, English and Polish narration
         run: node scripts/generate-voice.mjs
         env:
