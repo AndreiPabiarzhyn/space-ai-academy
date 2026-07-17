@@ -4,6 +4,10 @@ const fs = require('fs');
 const vm = require('vm');
 
 const i18nSource = fs.readFileSync('js/i18n.js', 'utf8');
+const htmlSource = fs.readFileSync('index.html', 'utf8');
+if (!fs.existsSync('assets/favicon.svg') || !htmlSource.includes('rel="icon" href="assets/favicon.svg"')) {
+  throw new Error('Application favicon is missing or not linked');
+}
 const context = {
   S: { lang: 'ru' },
   save() {},
