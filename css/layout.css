@@ -23,6 +23,7 @@
 }
 .brand { display: flex; align-items: center; gap: 8px; font-size: 16px; letter-spacing: .02em; white-space: nowrap; }
 .brand-mark { display: grid; width: 32px; height: 32px; place-items: center; border-radius: 10px; background: linear-gradient(135deg, #8d75ef, #24bdc6); box-shadow: inset 0 0 0 1px rgb(255 255 255 / 25%); }
+.current-chapter { display: none; min-width: 0; overflow: hidden; padding: 7px 12px; border: 1px solid rgb(255 255 255 / 14%); border-radius: 12px; color: #dce5ff; background: rgb(255 255 255 / 8%); font-size: 14px; text-overflow: ellipsis; white-space: nowrap; }
 .hud { display: flex; align-items: center; gap: 8px; margin-left: auto; }
 .player-pill, .accuracy-pill, .iconbtn, .voice-control, .language-control {
   min-height: 36px;
@@ -44,6 +45,10 @@
 .bar { width: 105px; height: 8px; overflow: hidden; border-radius: 8px; background: rgb(5 13 35 / 70%); }
 .bar i { display: block; width: 35%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #9d82f3, #39d3d7); transition: width .6s; }
 .iconbtn { width: 38px; color: #fff; font-size: 16px; }
+.exit-task { display: none; }
+.task-mode .current-chapter { display: block; }
+.task-mode .map, .task-mode .player-pill, .task-mode .accuracy-pill, .task-mode #sound { display: none; }
+.task-mode .exit-task { display: grid; }
 
 .map { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); max-width: var(--page); gap: 0; margin: 0 auto; padding: 7px 16px 4px; }
 .course-step { position: relative; z-index: 0; isolation: isolate; display: grid; min-width: 0; justify-items: center; gap: 4px; padding: 0 3px; color: #8b96aa; background: transparent; }
@@ -76,8 +81,9 @@ main > .screen.card:not(.intro-hero):not(.free-lab-screen) { display: flex; min-
 .mission-badge svg { width: 86px; max-height: 78px; }
 .chapter-illustration { width: 150px; height: 82px; margin: 0; overflow: hidden; align-self: center; border: 3px solid rgb(255 255 255 / 70%); border-radius: 17px; background: var(--theme-soft); box-shadow: var(--shadow-sm); }
 .chapter-illustration img { width: 100%; height: 100%; object-fit: cover; }
-.mission-body { display: flex; flex: 1; flex-direction: column; justify-content: center; padding: 16px 26px 20px; }
+.mission-body { display: flex; min-width: 0; flex: 1; flex-direction: column; padding: 14px 26px 20px; }
 .mission-body > * { width: 100%; }
+.task-content { display: flex; min-width: 0; flex: 1; flex-direction: column; justify-content: center; }
 .footer { display: grid; min-height: 48px; padding: 10px 20px; place-items: center; color: #aebbd2; background: rgb(5 10 24 / 72%); border-top: 1px solid rgb(255 255 255 / 9%); font-size: 14px; text-align: center; }
 
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 14px 0; }

@@ -40,6 +40,16 @@ if (openingBraces !== closingBraces) throw new Error('Unbalanced CSS braces');
 for (const selector of ['.course-step', '.choice .cta', '.review-arrow', '.mistake-review > header', '.voice-control', '.language-control']) {
   if (!css.includes(selector)) throw new Error(`Missing critical UI selector: ${selector}`);
 }
+for (const selector of ['.task-mode .map', '.current-chapter', '.task-helper', '.task-content', '.selectable-card.is-selected', '.selected-badge', '.star-progress', '.drag-stage::after', '.group-examples']) {
+  if (!css.includes(selector)) throw new Error(`Missing child-friendly UX selector: ${selector}`);
+}
+if (!css.includes('animation: hand-guide 4.8s') || !css.includes(':has(.task-content .robot)')) {
+  throw new Error('Persistent hand guide or duplicate robot suppression is missing');
+}
+if (!css.includes('width: 190px; height: 128px;') || !css.includes('width: min(100%, 280px); height: 170px;')) {
+  throw new Error('Task image size standards are missing');
+}
+if (!css.includes('min-height: 54px;') || !css.includes('gap: 16px;')) throw new Error('Touch targets are too small or crowded');
 for (const selector of ['.lesson-brief', '.brief-card', '.brief-action', '.brief-theory']) {
   if (!css.includes(selector)) throw new Error(`Missing lesson brief selector: ${selector}`);
 }
@@ -54,6 +64,9 @@ if (!css.includes('font-size: 14px; font-weight: 800;') || !css.includes('.intro
 }
 for (const selector of ['animation-name: collision-flight', 'animation-name: safe-flight', 'animation-name: near-flight', '.mover svg']) {
   if (!css.includes(selector)) throw new Error(`Missing collision animation rule: ${selector}`);
+}
+if (!css.includes('@keyframes safe-flight { 0% { left: -9%; top: 5%;') || !css.includes('50% { left: 48%; top: 1%;')) {
+  throw new Error('Safe satellite route does not visibly clear the danger zone');
 }
 if (css.includes('.trajectory-hit, .trajectory-safe, .trajectory-near { position: absolute; height: 4px;')) {
   throw new Error('Collision object is collapsed into a trajectory line');
@@ -137,6 +150,13 @@ if (!voiceSource.includes('assets/audio/${S.lang}/${key}.mp3') || !voiceSource.i
 }
 if (!appSource.includes('function narrateCurrent') || appSource.includes('skipNextLessonBrief=true')) {
   throw new Error('Persistent narration or first lesson brief is broken');
+}
+for (const feature of ['function setTaskMode', 'function taskHelper', 'function selectLearningCard', 'function starProgress', 'function showGestureDemo', "t('gentleRetry')"]) {
+  if (!appSource.includes(feature)) throw new Error(`Missing child-friendly interaction: ${feature}`);
+}
+const freeLabSource=fs.readFileSync('js/free-lab.js','utf8');
+for (const feature of ['function groupExamples', 'function chooseTestKid', 'function verifySelectedKid', "starProgress(freeState.index", "groupExamples(0)", "groupExamples(1)"]) {
+  if (!freeLabSource.includes(feature)) throw new Error(`Missing free-lab interaction: ${feature}`);
 }
 if (scenesSource.includes('dataErrorLabel(') || !scenesSource.includes('hiddenDataErrorTitle') || !scenesSource.includes('model-change')) {
   throw new Error('Visual data-quality lesson is not active');

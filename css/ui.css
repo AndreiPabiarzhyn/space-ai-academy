@@ -1,20 +1,47 @@
 .cta, .choice button {
-  min-height: 44px;
-  padding: 10px 18px;
-  border-radius: 14px;
+  min-height: 54px;
+  padding: 12px 22px;
+  border-radius: 16px;
   transition: transform .15s, box-shadow .15s, background .15s;
 }
 .cta { color: #fff; background: var(--theme-accent); box-shadow: 0 5px 0 var(--theme-dark); }
 .cta:hover, .choice button:hover { transform: translateY(-2px); }
 .cta:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--theme-dark); }
 .cta.alt { background: #da609c; box-shadow: 0 5px 0 #a33c75; }
-.choice { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
-.choice button { min-width: 150px; border: 2px solid #d8deea; background: #fff; box-shadow: 0 3px 0 #ccd4e2; }
+.choice { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+.choice button { min-width: 168px; border: 2px solid #d8deea; background: #fff; box-shadow: 0 3px 0 #ccd4e2; }
 .choice button:hover { border-color: var(--theme-accent); background: var(--theme-soft); }
 .choice .cta { border-color: transparent; color: #fff; background: var(--theme-accent); box-shadow: 0 5px 0 var(--theme-dark); }
 .choice .cta:hover { border-color: transparent; color: #fff; background: var(--theme-accent); }
 .choice .cta.alt { background: #da609c; box-shadow: 0 5px 0 #a33c75; }
 .feedback { min-height: 40px; padding: 8px; color: var(--theme-dark); text-align: center; }
+.answer-wrong { border-color: #e8b96c !important; background: #fff7e7 !important; animation: soft-wiggle .3s; }
+.answer-correct { border-color: var(--green) !important; background: #eaf8f1 !important; }
+
+.task-helper { display: flex; width: fit-content !important; min-height: 58px; align-items: center; align-self: flex-end; gap: 10px; margin: 0 0 8px auto; padding: 5px 13px 5px 7px; border: 1px solid #dbe2ef; border-radius: 18px; color: var(--ink); background: linear-gradient(135deg, #f4f1ff, #e8faf7); box-shadow: var(--shadow-sm); }
+.task-helper .robot { width: 50px; height: 54px; flex: 0 0 50px; margin: 0; animation: none; transform: scale(.28); transform-origin: top left; }
+.task-helper > span { max-width: 220px; font-size: 15px; line-height: 1.2; }
+.mission-body:has(.task-content .robot) > .task-helper, .free-lab-body:has(#freeGame .robot) > .task-helper { display: none; }
+
+.selectable-card { position: relative; }
+.selectable-card, .bin, .training-bin, .verify-zone, .kid-test-card, .dataset-strip > button { touch-action: manipulation; }
+.selectable-card.is-selected { border-color: var(--theme-accent) !important; box-shadow: 0 0 0 5px color-mix(in srgb, var(--theme-accent) 18%, transparent), var(--shadow-sm); animation: selected-pop .34s ease-out; transform: translateY(-3px) scale(1.025); }
+.selected-badge { position: absolute; z-index: 3; top: 8px; right: 8px; display: none; padding: 5px 9px; border-radius: 99px; color: #fff; background: var(--theme-accent); font-size: 12px; }
+.is-selected .selected-badge { display: block; }
+
+.star-progress { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 0 0 12px; color: var(--muted); }
+.star-progress > div { display: flex; gap: 9px; }
+.star-progress span { color: #d9deea; font-size: 27px; line-height: 1; filter: drop-shadow(0 2px 0 #c6cedc); transition: .25s; }
+.star-progress span.filled { color: #ffc94f; filter: drop-shadow(0 2px 0 #d89a26); transform: scale(1.08); }
+.star-progress span.active { color: #eadcae; animation: star-wait 1s alternate infinite; }
+.star-progress small { min-width: 48px; font-size: 13px; }
+
+.drag-stage::after, .training-board::after { content: "☝"; position: absolute; z-index: 7; top: 58%; left: 50%; color: #fff; font-size: 34px; opacity: 0; filter: drop-shadow(0 3px 5px rgb(16 27 55 / 45%)); pointer-events: none; animation: hand-guide 4.8s ease-in-out infinite; }
+
+@keyframes selected-pop { 50% { transform: translateY(-7px) scale(1.06); } }
+@keyframes soft-wiggle { 50% { transform: rotate(-1deg) scale(1.01); } }
+@keyframes star-wait { to { transform: scale(1.12); opacity: .8; } }
+@keyframes hand-guide { 0%, 18%, 100% { opacity: 0; transform: translate(-50%, 0) scale(.9); } 28%, 42% { opacity: .48; transform: translate(-50%, -10px) scale(1); } 72% { opacity: .48; transform: translate(-430%, -8px) scale(.96); } 84% { opacity: 0; transform: translate(-430%, -8px) scale(.96); } }
 
 .object, .data-card {
   border: 2px solid var(--line);
@@ -25,12 +52,12 @@
 }
 .object { display: flex; min-height: 125px; flex-direction: column; align-items: center; justify-content: center; padding: 12px; text-align: center; }
 .object:hover, .data-card:hover { transform: translateY(-4px); border-color: var(--theme-accent); }
-.object .art { display: grid; width: 104px; height: 74px; place-items: center; font-size: 0; }
+.object .art { display: grid; width: 164px; height: 112px; place-items: center; font-size: 0; }
 .object .art svg, .data-card .art svg, .task-picture svg { width: 100%; height: 100%; overflow: visible; }
 .object small { color: var(--muted); }
 .object-name { margin-top: 8px; font-size: 15px; }
 .data-card { display: flex; min-height: 180px; cursor: grab; user-select: none; flex-direction: column; align-items: center; justify-content: center; padding: 14px; text-align: center; }
-.data-card .art { width: 140px; height: 94px; }
+.data-card .art { width: 190px; height: 128px; }
 .label-chip { margin-bottom: 8px; color: var(--theme-dark); font-size: 13px; letter-spacing: .1em; }
 
 .robot { position: relative; width: 170px; height: 190px; margin: 14px auto; filter: drop-shadow(0 14px 13px rgb(41 61 104 / 18%)); animation: float 3s ease-in-out infinite; }

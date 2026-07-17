@@ -1,5 +1,6 @@
 @media (max-width: 820px) {
   .brand span:last-child { display: none; }
+  .current-chapter { max-width: 210px; }
   .accuracy-pill { display: none; }
   .certificate-layout { grid-template-columns: 1fr; }
   .intro-hero { min-height: 560px; }
@@ -11,6 +12,7 @@
   .intro-copy { width: 72%; min-height: inherit; padding: 38px; }
   .drag-stage, .training-board { grid-template-columns: 1fr; }
   .drag-stage .data-card, .training-focus { order: -1; }
+  .drag-stage::after, .training-board::after { top: 30%; animation-name: hand-guide-mobile; }
   .decision-layout, .unknown-layout { grid-template-columns: 1fr; }
   .robot-review, .unknown-robot { display: grid; grid-template-columns: 180px 1fr; align-items: center; }
   .experiment-layout, .data-before-after, .test-workbench { grid-template-columns: 1fr; }
@@ -40,9 +42,12 @@
   main > .screen.card:not(.intro-hero):not(.free-lab-screen) { min-height: 0; }
 }
 
+@keyframes hand-guide-mobile { 0%, 18%, 100% { opacity: 0; transform: translate(-50%,0) scale(.9); } 28%, 42% { opacity: .48; transform: translate(-50%,-10px) scale(1); } 72% { opacity: .48; transform: translate(-50%,220%) scale(.96); } 84% { opacity: 0; transform: translate(-50%,220%) scale(.96); } }
+
 @media (max-width: 620px) {
   body { font-size: 17px; }
   .top { gap: 7px; padding-inline: 10px; }
+  .task-mode .brand { display: none; }.task-mode .current-chapter { max-width: 42vw; }
   .brand-mark { width: 36px; }
   .player-pill small, .player-pill i, .player-pill span:last-child { display: none; }
   .player-pill { padding-inline: 10px; }
@@ -54,6 +59,7 @@
   .card { border-radius: 21px; }
   .mission-head { grid-template-columns: 1fr 82px; min-height: 126px; gap: 12px; padding: 17px 16px; }
   .mission-body { padding: 16px 15px 20px; }
+  .task-helper { min-height: 52px; margin-bottom: 7px; }.task-helper > span { max-width: 170px; font-size: 14px; }
   .title { font-size: clamp(27px, 9vw, 35px); }
   .lead { font-size: 16px; }
   .mission-badge { width: 82px; min-height: 82px; border-radius: 18px; }
